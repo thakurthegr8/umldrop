@@ -1,32 +1,20 @@
-import cache from "@/src/services/cache";
-import puppeteer from "puppeteer-core";
+// pages/api/scrape.js
 
-const questions = async (req, res) => {
+import axios from 'axios';
+import cheerio from 'cheerio';
+
+export default async (req, res) => {
   try {
-    const cacheRes = await cache.get(req.url);
-    if (cacheRes) {
-      return res.status(200).json(cacheRes);
-    }
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+    const response = await axios.get('https://datalemur.com/questions');
+    const html = response.data;
+    const $ = cheerio.load(html);
 
-    const url = "https://datalemur.com/questions";
-    await page.goto(url);
+    const jsonScript = $('#__NEXT_DATA__').html();
+    const jsonData = JSON.parse(jsonScript);
 
-    const jsonScriptHandle = await page.$("#__NEXT_DATA__");
-    const jsonText = await page.evaluate(
-      (script) => script.textContent,
-      jsonScriptHandle
-    );
-    const jsonData = JSON.parse(jsonText);
-
-    await browser.close();
-    const result = jsonData?.props?.pageProps?.questions;
-    await cache.set(req.url, result, { ex: 60000 });
-    return res.status(200).json(jsonData?.props?.pageProps?.questions);
+    res.status(200).json(jsonData?.props?.pageProps?.questions);
   } catch (error) {
-    return res.status(400).json("error");
+    console.error('Error:', error);
+    res.status(500).send('Internal Server Error');
   }
 };
-
-export default questions;
