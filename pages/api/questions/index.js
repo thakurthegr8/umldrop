@@ -1,5 +1,5 @@
 import cache from "@/src/services/cache";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 
 const questions = async (req, res) => {
   try {
