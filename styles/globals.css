@@ -1,27 +1,128 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-primary: #f63232;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  font-family: "Inter", sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-gray-50 dark:bg-general text-general dark:text-white;
+}
+
+/* buttons */
+
+button {
+  @apply relative overflow-hidden rounded-lg font-normal text-sm py-1 px-2 md:py-2 md:px-3 flex justify-center items-center active:scale-95 transition-all tracking-tight 
+   disabled:hover:bg-gray-300  disabled:text-gray-400  disabled:active:scale-100
+   dark:disabled:bg-white/10 dark:disabled:text-gray-300 dark:disabled:border-none
+   dark:disabled:hover:bg-white/10
+   ;
+}
+
+.btn-sm {
+  @apply text-sm;
+}
+
+.btn-lg {
+  @apply text-lg;
+}
+/* filled */
+.btn-primary {
+  @apply bg-primary border border-primary active:bg-primary/75 hover:bg-primary/75 text-white;
+}
+.btn-secondary {
+  @apply bg-secondary dark:bg-dark_secondary dark:text-white border dark:border-white/10 border-secondary active:bg-secondary/75 dark:active:bg-dark_secondary/25 hover:bg-secondary/75 dark:hover:bg-dark_secondary/50 text-general;
+}
+.btn-general {
+  @apply bg-general dark:bg-white border border-general active:bg-general/75 dark:active:bg-white/75 dark:hover:bg-white/75 hover:bg-general/75 text-white dark:text-general;
+}
+
+/* outlined */
+.btn-text {
+  @apply bg-transparent;
+}
+.btn-text-primary {
+  @apply btn-text active:bg-primary/75 hover:bg-primary hover:text-white text-primary;
+}
+.btn-text-secondary {
+  @apply btn-text active:bg-secondary/75 hover:bg-secondary hover:text-general text-secondary;
+}
+.btn-text-general {
+  @apply btn-text active:bg-general/75 hover:bg-general hover:text-white text-general;
+}
+
+/* outlined */
+.btn-outlined {
+  @apply bg-transparent border;
+}
+.btn-outlined-primary {
+  @apply btn-outlined border-primary active:bg-primary/75 hover:bg-primary active:text-white hover:text-white text-primary;
+}
+.btn-outlined-secondary {
+  @apply btn-outlined border-secondary active:bg-secondary/75 hover:bg-secondary active:text-general hover:text-general text-general;
+}
+.btn-outlined-general {
+  @apply btn-outlined border-general active:bg-general/75 hover:bg-general active:text-white hover:text-white text-general;
+}
+
+/* Icon */
+
+.btn-icon {
+  @apply rounded-full text-black dark:text-white bg-transparent p-2 hover:bg-gray-200 dark:hover:bg-white/20 active:bg-gray-300;
+}
+
+/* typography */
+h1 {
+  @apply text-3xl tracking-tight;
+}
+h2 {
+  @apply text-2xl tracking-tight;
+}
+
+h3 {
+  @apply text-xl tracking-tight;
+}
+
+p {
+  @apply text-base tracking-tight;
+}
+
+span {
+  @apply text-sm tracking-tight;
+}
+
+input,
+textarea,
+select {
+  @apply bg-gray-100 dark:bg-dark_secondary outline-none p-3 rounded-lg border dark:border-white/20 border-gray-300 focus:border-general dark:focus:border-white transition-all font-semibold  text-sm;
+}
+input::-webkit-color-swatch {
+  border: none;
+}
+
+/* toast */
+
+.Toastify__toast {
+  @apply text-sm p-1 capitalize;
+}
+
+/* neubrutalism */
+.neu-bg{
+  box-shadow:0.25rem 0.25rem 0px;
+
+}
+.neu-bg-general{
+  @apply border  border-secondary dark:border-white/30 shadow-secondary dark:shadow-white/30;
+}
+.neu-bg-primary{
+  @apply border border-primary shadow-primary dark:shadow-primary;
+}
+
+.neu-ref-landing{
+  box-shadow:0.25rem 0.25rem 0px #000000;
 }
