@@ -1,30 +1,40 @@
 
+import Navbar from "@/src/components/sections/Navbar";
 import Layout from "@/src/components/utils/Layout";
 import Typography from "@/src/components/utils/Typography"
 import withURL from "@/src/middlewares/withUrl";
 import axios from "axios";
+import Link from "next/link";
+
+const colors = {
+  "Hard": "red",
+  "Medium": "yellow",
+  "Easy": "green"
+}
+
+const badgeCSS = (category) => `text-center text-${colors[category]}-500`
 
 export default function Home(props) {
   return <Layout.Col className="w-full">
-    <Layout.Row className="p-4 border-b border-dark_secondary">
-      <Typography.Subtitle className="font-bold">Ace SQL</Typography.Subtitle>
-    </Layout.Row>
-    <Layout.Container className="max-w-5xl py-8">
+    <Navbar />
+    <Layout.Container className="max-w-5xl py-8 mt-24">
+      <Layout.Col className="w-1/2 h-[200px] animate-pulse bg-white blur-3xl rounded-full bg-opacity-30 -z-30 left-16 top-20 absolute"></Layout.Col>
+      <Layout.Col className="w-1/2 h-[200px] animate-pulse bg-yellow-500 rounded-full blur-3xl bg-opacity-50 -z-30 top-24  right-16  absolute"></Layout.Col>
       <Layout.Col className="w-full gap-4">
-        <Typography.Title className="font-bold text-center lg:text-7xl tracking-tighter">Unleash Your SQL Mastery</Typography.Title>
+        <Typography.Title className="font-bold text-center text-5xl lg:text-8xl tracking-tighter">⚡️Unleash Your SQL Mastery</Typography.Title>
         <Typography.Body className="text-center dark:text-secondary">Dive into the world of databases and query your way to excellence with our cutting-edge SQL coding platform. Elevate your skills, conquer complex data challenges, and shape your future as a database maestro.</Typography.Body>
-          <Layout.Row className="justify-between w-full py-3 rounded-lg border dark:border-secondary/30 bg-secondary dark:bg-dark_secondary px-4">
-            <Typography.Body className="font-semibold">Company</Typography.Body>
-            <Typography.Body className="font-semibold">Title</Typography.Body>
-            <Typography.Body className="font-semibold">Difficulty</Typography.Body>
-          </Layout.Row>
+        <Layout.Row className="justify-between w-full  backdrop:blur-2xl py-3 rounded-lg border border-secondary/30 bg-dark_secondary/50 px-4">
+          <Typography.Body className="font-semibold">Company</Typography.Body>
+          <Typography.Body className="font-semibold">Title</Typography.Body>
+          <Typography.Body className="font-semibold">Difficulty</Typography.Body>
+        </Layout.Row>
         <Layout.Col className="divide-y divide-dark_secondary ">
           {props.data && props.data.map((item, index) => {
-            return <Layout.Row key={index} className="justify-between w-full py-2 px-4">
+            return item.category === "SQL" && !item.accessGroups ? <Link key={index} className="justify-between w-full py-2 px-4 flex hover:bg-dark_secondary/30 transition-all" href={`/questions/${item.slug}`}>
               <Typography.Body className="text-left">{item.company}</Typography.Body>
               <Typography.Body className="text-center flex-1">{item.title}</Typography.Body>
-              <Typography.Body className="text-center">{item.difficulty}</Typography.Body>
-            </Layout.Row>
+              {colors[item.difficulty.trim()] && <Typography.Body className={badgeCSS(item.difficulty)}>{item.difficulty}</Typography.Body>}
+            </Link> : null
           })}
         </Layout.Col>
       </Layout.Col>
@@ -49,5 +59,4 @@ export const getServerSideProps = withURL(async (ctx) => {
       notFound: true
     }
   }
-
 });

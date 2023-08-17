@@ -11,7 +11,7 @@
 }
 
 body {
-  @apply bg-gray-50 dark:bg-general text-general dark:text-white;
+  @apply bg-general text-white;
 }
 
 /* buttons */
@@ -125,4 +125,7 @@ input::-webkit-color-swatch {
 
 .neu-ref-landing{
   box-shadow:0.25rem 0.25rem 0px #000000;
+}
+.mkdwn table, td, th{
+  @apply border border-dark_secondary p-2;
 }
