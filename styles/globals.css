@@ -9,7 +9,26 @@
   font-family: "Inter", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+::-webkit-scrollbar {
+  @apply w-2 bg-transparent; 
+}
 
+::-webkit-scrollbar-thumb {
+  @apply bg-dark_secondary rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary;
+}
+
+
+::-webkit-scrollbar-track:hover {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #333;
+}
 body {
   @apply bg-general text-white;
 }
