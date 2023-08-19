@@ -1,4 +1,6 @@
 
+import Badge from "@/src/components/elements/Badge";
+import Page from "@/src/components/pages";
 import Navbar from "@/src/components/sections/Navbar";
 import Layout from "@/src/components/utils/Layout";
 import Typography from "@/src/components/utils/Typography"
@@ -12,10 +14,9 @@ const colors = {
   "Easy": "green"
 }
 
-const badgeCSS = (category) => `text-center text-${colors[category]}-500`
-
 export default function Home(props) {
-  return <Layout.Col className="w-full">
+
+  return <Page> <Layout.Col className="w-full">
     <Navbar />
     <Layout.Container className="max-w-5xl py-8 mt-24">
       <Layout.Col className="w-1/2 h-[200px] animate-pulse bg-white blur-3xl rounded-full bg-opacity-30 -z-30 left-16 top-20 absolute"></Layout.Col>
@@ -33,13 +34,14 @@ export default function Home(props) {
             return item.category === "SQL" && !item.accessGroups ? <Link key={index} className="justify-between w-full py-2 px-4 flex hover:bg-dark_secondary/30 transition-all" href={`/questions/${item.slug}`}>
               <Typography.Body className="text-left">{item.company}</Typography.Body>
               <Typography.Body className="text-center flex-1">{item.title}</Typography.Body>
-              {colors[item.difficulty.trim()] && <Typography.Body className={badgeCSS(item.difficulty)}>{item.difficulty}</Typography.Body>}
+              <Badge type={item.difficulty.toLowerCase()}>{item.difficulty}</Badge>
             </Link> : null
           })}
         </Layout.Col>
       </Layout.Col>
     </Layout.Container>
-  </Layout.Col>;
+  </Layout.Col>
+  </Page>;
 }
 
 

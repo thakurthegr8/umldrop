@@ -29,14 +29,14 @@ const SolvedStatus = (props) => {
 const RejectedStatus = (props) => {
     const { payload } = props;
     return (<>
-        <Layout.Col className="gap-2 ">
+        <Layout.Col className="gap-2 justify-start">
             <Typography.Title className="capitalize">
-                {payload.status}
+                Wrong Answer
             </Typography.Title>
             <Typography.Body className="border border-dark_secondary p-2 text-red-500 rounded-md">{payload.error}</Typography.Body>
         </Layout.Col>
         {payload?.payload &&
-            <Layout.Col className="gap-3 ">
+            <Layout.Col className="gap-3 justify-start">
                 <Typography.Heading>Expected Output</Typography.Heading>
                 <Table cols={getColumns(payload.payload.adminQueryResult[0])} dataset={payload.payload.adminQueryResult} />
                 <Typography.Heading>Your Output</Typography.Heading>
@@ -54,7 +54,7 @@ const SubmissionStatus = (props) => {
         setShowStatus(prev => !prev);
     }
     return (
-        <Layout.Col className="absolute z-10 bg-general inset-x-0 bottom-1 mb-28 max-h-[50%] overflow-y-scroll">
+        <Layout.Col className="absolute z-10 justify-start bg-general inset-x-0 bottom-1 mb-28 max-h-[50%] overflow-y-scroll">
             <Layout.Row className="sticky top-0 bg-general inset-x-0 p-2 justify-end">
                 <Button className="btn-icon" onClick={handleShowStatus}>
                     {showStatus ? <CloseIcon className='w-6 h-6 aspect-square' /> : <OpenIcon className='w-6 h-6 aspect-square' />}

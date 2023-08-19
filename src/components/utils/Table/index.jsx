@@ -3,9 +3,9 @@ import React from "react";
 const Table = (props) => {
   console.log(props.dataset);
   return (
-    <table className="w-full divide-y table-fixed text-sm">
-      <tr className="py-3">
-        {props.cols.map((item, index) => (
+    <table className="w-full table-fixed text-sm divide-y divide-dark_secondary">
+      <tr className="py-3 bg-dark_secondary/50">
+        {props?.cols && props.cols.map((item, index) => (
           <th key={index} className="text-left">
             {item.placeholder}
           </th>
@@ -13,7 +13,7 @@ const Table = (props) => {
       </tr>
       {props.dataset.length !== 0 &&
         props.dataset.map((item, index) => (
-          <tr key={index} className=" capitalize">
+          <tr key={index} className="capitalize">
             {props.cols.map((col, colIdx) => (
               <td key={colIdx} className="py-2">
                 {col?.render != null

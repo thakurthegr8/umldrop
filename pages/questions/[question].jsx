@@ -8,16 +8,17 @@ import CodeDescription from "@/src/components/blocks/Question/CodeDescription";
 import CodeEditor from "@/src/components/blocks/Question/CodeEditor";
 
 export default function QuestionPage(props) {
+    console.log(props.data);
     return <Layout.Col className="w-full">
         <Navbar />
         <QuestionProvider payload={props.data}>
             <Layout.Col className="mt-16 fixed bottom-0 top-0 ">
                 <Layout.Grid className="grid-cols-1 md:grid-cols-2 divide-x divide-dark_secondary">
-                    <Layout.Col className="gap-2 p-4 overflow-y-scroll h-screen pb-24 mkdwn">
+                    <Layout.Col className="gap-2 p-8 items-start overflow-y-scroll h-screen pb-24 mkdwn">
                         <CodeDescription />
                     </Layout.Col>
-                    <Layout.Col className="gap-2 w-full relative">
-                        <CodeEditor/>
+                    <Layout.Col className="w-full relative">
+                        <CodeEditor />
                     </Layout.Col>
                 </Layout.Grid>
             </Layout.Col>

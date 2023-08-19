@@ -32,7 +32,22 @@
 body {
   @apply bg-general text-white;
 }
-
+/* tables */
+table{
+  @apply rounded-md  border-dark_secondary overflow-hidden shadow-sm;
+}
+ tbody{
+  @apply divide-y divide-dark_secondary rounded-md;
+}
+ thead{
+  @apply bg-dark_secondary/50;
+}
+ tr{
+  @apply bg-dark_secondary/30;
+}
+ th,td{
+  @apply p-3;
+}
 /* buttons */
 
 button {
@@ -52,7 +67,7 @@ button {
 }
 /* filled */
 .btn-primary {
-  @apply bg-primary border border-primary active:bg-primary/75 hover:bg-primary/75 text-white;
+  @apply bg-primary border border-primary active:bg-primary/75 hover:bg-primary/75 text-general;
 }
 .btn-secondary {
   @apply bg-secondary dark:bg-dark_secondary dark:text-white border dark:border-white/10 border-secondary active:bg-secondary/75 dark:active:bg-dark_secondary/25 hover:bg-secondary/75 dark:hover:bg-dark_secondary/50 text-general;
@@ -145,6 +160,6 @@ input::-webkit-color-swatch {
 .neu-ref-landing{
   box-shadow:0.25rem 0.25rem 0px #000000;
 }
-.mkdwn table, td, th{
-  @apply border border-dark_secondary p-2;
+.mkdwn p{
+  @apply text-secondary;
 }
