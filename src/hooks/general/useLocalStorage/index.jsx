@@ -9,6 +9,7 @@ const useLocalStorage = (props) => {
     }, [])
     const setItem = (key, value) => {
         localStorage.setItem(key, value);
+        setValue(value);
     }
     return { value, setItem };
 
