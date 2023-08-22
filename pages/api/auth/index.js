@@ -1,10 +1,9 @@
 import supabaseClient from "@/src/services/supabase";
-import { getCookies } from "@/src/utils/cookies";
 import Cookies from "cookies";
 
 const handler = async (req, res) => {
   try {
-    const cookies = new Cookies(req,res);
+    const cookies = new Cookies(req, res);
     const refreshToken = cookies.get("refresh_token");
     const accessToken = cookies.get("access_token");
     if (accessToken && refreshToken) {
@@ -15,8 +14,14 @@ const handler = async (req, res) => {
     } else {
       throw new Error("User is not authenticated.");
     }
-    const data = await supabaseClient.auth.getSession();
-    return res.status(200).json(data);
+    const session = await supabaseClient.auth.getSession();
+    if (session.error) throw new Error("Error getting session");
+    const { data: user, error: userDataError } = await supabaseClient
+      .from("users")
+      .select("*")
+      .eq("id", session.data.session.user.email);
+    if (userDataError) throw new Error("Error getting user data");
+    return res.status(200).json(user[0]);
   } catch (error) {
     console.log(error);
     if (error instanceof Error) {

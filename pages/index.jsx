@@ -8,8 +8,6 @@ import HomeHeroBlock from "@/src/components/blocks/Home/Hero";
 import HomeQuestionsTableBlock from "@/src/components/blocks/Home/QuestionsTable";
 import HomeGlowingBlock from "@/src/components/blocks/Home/GlowingBlock";
 
-
-
 export default function Home(props) {
   return <Page>
     <Layout.Col className="w-full">
