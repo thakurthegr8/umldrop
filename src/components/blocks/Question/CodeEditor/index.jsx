@@ -10,7 +10,7 @@ import useLocalStorage from '@/src/hooks/general/useLocalStorage';
 
 const CodeEditor = () => {
     const question = useContext(QuestionContext);
-    const editorHistory = useLocalStorage({ key: question.id })
+    const editorHistory = useLocalStorage({ key: question.id, fallback: question?.baseQuery })
     const runCode = useFetch({ url: "/api/solution/run", method: "POST" });
     const handleEditorChange = (editorResult) => {
         editorHistory.setItem(question.id, editorResult);
@@ -19,10 +19,10 @@ const CodeEditor = () => {
         await runCode.dispatch({ questionId: question.id, userSolution: editorHistory.value })
     }
     return <>
-        <Editor onChange={handleEditorChange} language="sql" height="80%" defaultValue={editorHistory.value ? editorHistory.value : question?.baseQuery} theme="vs-dark" className="w-full" />
-        <Layout.Col>
+        <Editor onChange={handleEditorChange} language="sql" height="100%" defaultValue={editorHistory.value ? editorHistory.value : question?.baseQuery} theme="vs-dark" className="w-full" />
+        <Layout.Col className="sticky bottom-0 ">
             {(runCode.data !== null || runCode.error !== null) && <SubmissionStatus runCode={runCode} />}
-            <Layout.Row className="px-4 pt-3 justify-end">
+            <Layout.Row className="px-4 justify-end py-3 bg-general border-t border-dark_secondary">
                 <Button className="btn-primary font-medium" onClick={handleSubmitCode} disabled={runCode.loading || !editorHistory.value}>{runCode.loading ? <BeatLoader color="#ffffff" size={12} /> : "Run Code"}</Button>
             </Layout.Row>
         </Layout.Col>

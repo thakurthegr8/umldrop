@@ -163,3 +163,6 @@ input::-webkit-color-swatch {
 .mkdwn p{
   @apply text-secondary;
 }
+.mkdwn a{
+  @apply underline text-blue-400;
+}

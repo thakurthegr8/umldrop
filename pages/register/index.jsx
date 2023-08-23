@@ -7,6 +7,7 @@ import Typography from '@/src/components/utils/Typography';
 import useLogin from '@/src/hooks/auth/useLogin';
 import useRegister from '@/src/hooks/auth/useRegister';
 import { useAuth } from '@/src/providers/Auth';
+import Link from 'next/link';
 import React from 'react'
 import { toast } from 'react-toastify';
 
@@ -21,27 +22,27 @@ const RegisterPage = () => {
         await reg.registerWithEmailAndPassword(regPayload);
     }
     return (
-        <Layout.Col className="h-screen">
-            <Navbar />
-            <Layout.Grid className="mt-12 pt-6 lg:grid-cols-2 divide-x h-full divide-dark_secondary">
-                <Layout.Container className="max-w-sm pt-2">
-                    <Typography.Title className="text-center my-4 font-semibold text-7xl ">⚡️</Typography.Title>
-                    <Typography.Heading className="text-center my-4 font-semibold">Register With Ace SQL</Typography.Heading>
-                    <Form onSubmit={onSubmit} autoComplete="off">
-                        <Layout.Col className="gap-4">
-                            <Form.Input type="text" placeholder="Enter name" name="name" required />
-                            <Form.Input type="email" placeholder="Enter email" name="email" required />
-                            <Form.Input type="password" placeholder="Enter password" name="password" required />
-                            <Form.Input type="password" placeholder="Confirm password" name="conf_password" required />
-                            <Button className="btn-primary font-bold">Register</Button>
-                        </Layout.Col>
-                    </Form>
-                    <Button className="btn-secondary w-full mt-4">Login</Button>
-                </Layout.Container>
-                <Layout.Col className="hidden lg:flex bg-no-repeat bg-[url('/assets/hero.png')] bg-cover bg-center" >
-                </Layout.Col>
-            </Layout.Grid>
-        </Layout.Col>
+        <Layout.Grid className="fixed inset-0 grid-cols-2">
+            <Layout.Row className="col-span-2 items-center justify-between p-3 border-b inset-x-0 backdrop-blur border-dark_secondary">
+                <Navbar />
+            </Layout.Row>
+            <Layout.Container className="max-w-sm pt-2 h-screen overflow-y-scroll col-span-2 lg:col-span-1">
+                <Typography.Title className="text-center my-4 font-semibold text-7xl ">⚡️</Typography.Title>
+                <Typography.Heading className="text-center my-4 font-semibold">Register With Ace SQL</Typography.Heading>
+                <Form onSubmit={onSubmit} autoComplete="off">
+                    <Layout.Col className="gap-4">
+                        <Form.Input type="text" placeholder="Enter name" name="name" required />
+                        <Form.Input type="email" placeholder="Enter email" name="email" required />
+                        <Form.Input type="password" placeholder="Enter password" name="password" required />
+                        <Form.Input type="password" placeholder="Confirm password" name="conf_password" required />
+                        <Button className="btn-primary font-bold" loading={reg.loading} disabled={reg.loading}>Register</Button>
+                    </Layout.Col>
+                </Form>
+                <Link href="/login"><Button className="btn-secondary w-full mt-4">Login</Button></Link>
+            </Layout.Container>
+            <Layout.Col className="hidden lg:flex bg-no-repeat bg-[url('/assets/og.png')] border-l border-dark_secondary bg-cover bg-center" >
+            </Layout.Col>
+        </Layout.Grid>
     )
 }
 

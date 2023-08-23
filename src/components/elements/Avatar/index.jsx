@@ -13,7 +13,7 @@ const Avatar = (props) => {
     })
     const uri = avatar.toDataUriSync();
     return (
-        <Image src={uri} width={32} height={32} className='rounded-full' />
+        <Image src={uri} width={32} height={32} className='rounded-full' alt="ace-sql-user"/>
     )
 }
 

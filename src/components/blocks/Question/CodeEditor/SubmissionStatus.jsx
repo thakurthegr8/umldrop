@@ -54,8 +54,8 @@ const SubmissionStatus = (props) => {
         setShowStatus(prev => !prev);
     }
     return (
-        <Layout.Col className="absolute z-10 justify-start bg-general inset-x-0 bottom-1 mb-28 max-h-[50%] overflow-y-scroll">
-            <Layout.Row className="sticky top-0 bg-general inset-x-0 p-2 justify-end">
+        <Layout.Col className="z-10 justify-start bg-general max-h-[400px] overflow-y-scroll">
+            <Layout.Row className=" bg-general inset-x-0 p-2 justify-end sticky top-0">
                 <Button className="btn-icon" onClick={handleShowStatus}>
                     {showStatus ? <CloseIcon className='w-6 h-6 aspect-square' /> : <OpenIcon className='w-6 h-6 aspect-square' />}
                 </Button>

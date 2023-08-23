@@ -15,7 +15,7 @@ const AccountAvatar = () => {
     if (!auth.data) return null;
     return (
         <>
-            <Menu className="relative z-10" as="div">
+            <Menu className="relative z-10 backdrop-blur" as="div">
                 <Menu.Button>
                     <Avatar seed={auth.data?.name} />
                 </Menu.Button>
