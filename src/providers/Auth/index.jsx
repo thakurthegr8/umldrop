@@ -8,7 +8,7 @@ const AuthProvider = (props) => {
   const authHandlers = useLogin();
   const signoutHandler = useFetch({
     method: "POST",
-    url: "/api/auth/signout",
+    url: "/api/auth/logout",
   });
   const removeProfileImageHandler = useFetch({
     method: "DELETE",
