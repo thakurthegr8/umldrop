@@ -6,24 +6,24 @@ import axios from "axios";
 import QuestionProvider from "@/src/providers/QuestionProvider";
 import CodeDescription from "@/src/components/blocks/Question/CodeDescription";
 import CodeEditor from "@/src/components/blocks/Question/CodeEditor";
+import { useAuth } from "@/src/providers/Auth";
+import Page from "@/src/components/pages";
+import { LOGOTEXT } from "@/src/constants";
 
 export default function QuestionPage(props) {
-    console.log(props.data);
-    return <Layout.Col className="w-full">
-        <Navbar />
-        <QuestionProvider payload={props.data}>
-            <Layout.Col className="mt-16 fixed bottom-0 top-0 ">
-                <Layout.Grid className="grid-cols-1 md:grid-cols-2 divide-x divide-dark_secondary">
-                    <Layout.Col className="gap-2 p-8 items-start overflow-y-scroll h-screen pb-24 mkdwn">
-                        <CodeDescription />
-                    </Layout.Col>
-                    <Layout.Col className="w-full relative">
-                        <CodeEditor />
-                    </Layout.Col>
-                </Layout.Grid>
-            </Layout.Col>
-        </QuestionProvider>
-    </Layout.Col>;
+    return <Page page={`${LOGOTEXT} | ${props.data.title}`}>
+        <Layout.Grid className="w-full fixed bottom-0 inset-0 grid-cols-2">
+            <Layout.Row className="justify-between items-center p-2 border-b col-span-2 border-dark_secondary"><Navbar /></Layout.Row>
+            <QuestionProvider payload={props.data}>
+                <Layout.Col className="gap-2 p-8 h-screen items-start overflow-y-scroll pb-32 mkdwn">
+                    <CodeDescription />
+                </Layout.Col>
+                <Layout.Col className="w-full relative border-l border-dark_secondary">
+                    <CodeEditor />
+                </Layout.Col>
+            </QuestionProvider>
+        </Layout.Grid>
+    </Page>;
 }
 
 

@@ -13,7 +13,7 @@ const Form = (props) => {
     );
     props.onSubmit(data);
   };
-  return <form {...props} onSubmit={onSubmit} />;
+  return <form {...props} onSubmit={onSubmit}/>;
 };
 
 Form.Input = Input;
