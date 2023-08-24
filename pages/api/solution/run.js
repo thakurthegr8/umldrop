@@ -3,15 +3,25 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
+  const result = {
+    data: null,
+    error: null,
+    status: null,
+  };
   try {
-    const response = await axios.post(
+    const lemurApiResponse = await axios.post(
       "https://datalemur.com/api/submit-solution",
       req.body
     );
-    const data = await response.data;
-    return res.status(200).json(data);
+    const lemurApiData = await lemurApiResponse.data;
+    result.data = {
+      codeResult: lemurApiData,
+      submissionResult: null,
+    };
+    result.status = 200;
   } catch (error) {
-    console.log(error.response.data);
-    return res.status(400).json(error?.response?.data);
+    result.error = error?.response?.data;
+    result.status = 400;
   }
+  return res.status(result.status).json(result);
 }

@@ -1,7 +1,7 @@
 import React from "react";
+import Typography from "../Typography";
 
 const Table = (props) => {
-  console.log(props.dataset);
   return (
     <table className="w-full table-fixed text-sm divide-y divide-dark_secondary">
       <tr className="py-3 bg-dark_secondary/50">
@@ -11,7 +11,7 @@ const Table = (props) => {
           </th>
         ))}
       </tr>
-      {props.dataset.length !== 0 &&
+      {props.dataset.length !== 0 ?
         props.dataset.map((item, index) => (
           <tr key={index} className="capitalize">
             {props.cols.map((col, colIdx) => (
@@ -22,7 +22,7 @@ const Table = (props) => {
               </td>
             ))}
           </tr>
-        ))}
+        )) : <tr><td colSpan={props.cols.length}>No data to show</td></tr>}
     </table>
   );
 };

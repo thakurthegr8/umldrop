@@ -7,16 +7,27 @@ import { QuestionContext } from '@/src/providers/QuestionProvider';
 import Button from '@/src/components/utils/Button';
 import SubmissionStatus from './SubmissionStatus';
 import useLocalStorage from '@/src/hooks/general/useLocalStorage';
+import { useAuth } from '@/src/providers/Auth';
 
 const CodeEditor = () => {
+    const auth = useAuth();
     const question = useContext(QuestionContext);
     const editorHistory = useLocalStorage({ key: question.id, fallback: question?.baseQuery })
-    const runCode = useFetch({ url: "/api/solution/run", method: "POST" });
+    const runCode = useFetch({ url: auth.data ? "/api/solution/run-auth" : "/api/solution/run", method: "POST" });
     const handleEditorChange = (editorResult) => {
         editorHistory.setItem(question.id, editorResult);
     }
     const handleSubmitCode = async () => {
-        await runCode.dispatch({ questionId: question.id, userSolution: editorHistory.value })
+        const payload = {
+            questionId: question.id,
+            userSolution: editorHistory.value,
+        }
+        if (auth.data) {
+            payload.questionText = question.slug
+            await runCode.dispatch(payload);
+            return;
+        }
+        await runCode.dispatch(payload)
     }
     return <>
         <Editor onChange={handleEditorChange} language="sql" height="100%" defaultValue={editorHistory.value ? editorHistory.value : question?.baseQuery} theme="vs-dark" className="w-full" />
