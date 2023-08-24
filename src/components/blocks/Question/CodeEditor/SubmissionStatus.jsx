@@ -33,7 +33,7 @@ const RejectedStatus = (props) => {
             <Typography.Title className="capitalize">
                 Wrong Answer
             </Typography.Title>
-            <Typography.Body className="border border-dark_secondary p-2 text-red-500 rounded-md">{payload.error}</Typography.Body>
+            {/* <Typography.Body className="border border-dark_secondary p-2 text-red-500 rounded-md">{payload.error}</Typography.Body> */}
         </Layout.Col>
         {payload?.payload &&
             <Layout.Col className="gap-3 justify-start">
@@ -53,6 +53,7 @@ const SubmissionStatus = (props) => {
     const handleShowStatus = () => {
         setShowStatus(prev => !prev);
     }
+    console.log(runCode)
     return (
         <Layout.Col className="z-10 justify-start bg-general max-h-[400px] overflow-y-scroll">
             <Layout.Row className=" bg-general inset-x-0 p-2 justify-end sticky top-0">
@@ -61,8 +62,8 @@ const SubmissionStatus = (props) => {
                 </Button>
             </Layout.Row>
             {showStatus && <Layout.Col className="p-4 items-start border-t border-dark_secondary">
-                {runCode.data && <SolvedStatus payload={runCode.data} />}
-                {runCode.error && <RejectedStatus payload={runCode.error} />}
+                {runCode.data?.data?.codeResult && <SolvedStatus payload={runCode.data.data.codeResult} />}
+                {runCode.error && <RejectedStatus payload={runCode.error.error} />}
             </Layout.Col>}
         </Layout.Col>
     )
