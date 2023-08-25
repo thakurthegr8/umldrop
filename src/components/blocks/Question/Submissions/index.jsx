@@ -1,4 +1,5 @@
 import Badge from '@/src/components/elements/Badge';
+import CopyToClipboard from '@/src/components/utils/General/CopyToClipboard';
 import Layout from '@/src/components/utils/Layout';
 import Table from '@/src/components/utils/Table';
 import useFetch from '@/src/hooks/general/useFetch';
@@ -19,6 +20,10 @@ const SubmissionsTable = () => {
         placeholder: "Status",
         key: "status",
         render: (text) => <Badge type={text === "wrong" ? "hard" : "easy"}>{text}</Badge>
+    }, {
+        placeholder: "Query",
+        key: "solution",
+        render: (text) => <CopyToClipboard text={text} />
     }]
     return <>
         {submissionsData.loading ? <PulseLoader size={8} color='#fff' /> : <Table cols={cols} dataset={submissionsData.data || []} />}
