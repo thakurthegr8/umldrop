@@ -16,6 +16,7 @@ import Submissions from "@/src/components/blocks/Question/Submissions";
 const tabs = ["description", "submissions"]
 
 export default function QuestionPage(props) {
+    console.log(props.data)
     return <Page page={`${LOGOTEXT} | ${props.data.title}`}>
         <Layout.Grid className="w-full fixed bottom-0 inset-0 grid-cols-2">
             <Layout.Row className="justify-between items-center p-2 border-b col-span-2 border-dark_secondary"><Navbar /></Layout.Row>
