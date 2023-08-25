@@ -33,7 +33,7 @@ const RejectedStatus = (props) => {
             <Typography.Title className="capitalize">
                 Wrong Answer
             </Typography.Title>
-            {/* <Typography.Body className="border border-dark_secondary p-2 text-red-500 rounded-md">{payload.error}</Typography.Body> */}
+            {payload?.error && <Typography.Body className="border border-dark_secondary p-2 text-red-500 rounded-md">{payload.error}</Typography.Body>}
         </Layout.Col>
         {payload?.payload &&
             <Layout.Col className="gap-3 justify-start">

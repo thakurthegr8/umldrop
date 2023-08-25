@@ -34,7 +34,7 @@ const CodeEditor = () => {
         <Layout.Col className="sticky bottom-0 ">
             {(runCode.data !== null || runCode.error !== null) && <SubmissionStatus runCode={runCode} />}
             <Layout.Row className="px-4 justify-end py-3 bg-general border-t border-dark_secondary">
-                <Button className="btn-primary font-medium" onClick={handleSubmitCode} disabled={runCode.loading || !editorHistory.value}>{runCode.loading ? <BeatLoader color="#ffffff" size={12} /> : "Run Code"}</Button>
+                <Button className="btn-primary font-medium" onClick={handleSubmitCode} disabled={runCode.loading || !editorHistory.value} loading={runCode.loading || !editorHistory.value}>Run Code</Button>
             </Layout.Row>
         </Layout.Col>
     </>

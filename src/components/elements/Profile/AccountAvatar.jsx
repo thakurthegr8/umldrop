@@ -43,6 +43,19 @@ const AccountAvatar = () => {
                             Sign Out
                         </Typography.Caption>
                     </Menu.Item>
+                    <Menu.Item
+                        as="div"
+                        onClick={() => null}
+                        className="p-2 w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-white/10 "
+                    >
+                        <LogOutIcon className="w-6 h-6" />
+                        <Typography.Caption
+                            className="text-sm"
+                            onClick={() => auth.signoutHandler.dispatch(null).then(res => router.reload("/"))}
+                        >
+                            Sign Out
+                        </Typography.Caption>
+                    </Menu.Item>
                 </Menu.Items>
             </Menu>
         </>
