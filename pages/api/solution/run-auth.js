@@ -32,6 +32,7 @@ export default withAuthApi(async function handler(req, res) {
             question: req.body.questionText,
             status: lemurApiData.status,
             solution: req.body.userSolution,
+            difficulty: req.body.difficulty,
           },
         ])
         .select();
@@ -51,6 +52,7 @@ export default withAuthApi(async function handler(req, res) {
             question: req.body.questionText,
             status: "wrong",
             solution: req.body.userSolution,
+            difficulty: req.body.difficulty,
           },
         ])
         .select();

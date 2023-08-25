@@ -24,6 +24,7 @@ const CodeEditor = () => {
         }
         if (auth.data) {
             payload.questionText = question.slug
+            payload.difficulty = question.difficulty.toLowerCase()
             await runCode.dispatch(payload);
             return;
         }
