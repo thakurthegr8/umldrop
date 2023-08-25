@@ -1,15 +1,20 @@
+import ProfileProgress from '@/src/components/blocks/Profile/Progress';
+import ProfileSolvedQuestions from '@/src/components/blocks/Profile/SolvedQuestions';
 import Avatar from '@/src/components/elements/Avatar';
 import Page from '@/src/components/pages';
 import Navbar from '@/src/components/sections/Navbar';
 import Layout from '@/src/components/utils/Layout';
 import Typography from '@/src/components/utils/Typography';
 import withAuthPage from '@/src/middlewares/withAuthPage';
+import withURL from '@/src/middlewares/withUrl';
 import { useAuth } from '@/src/providers/Auth';
+import ProfileProgessProvider from '@/src/providers/Profile/Progress';
+import supabaseClient from '@/src/services/supabase';
+import axios from 'axios';
 import React from 'react'
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
     const auth = useAuth();
-    console.log(auth)
     return (
         <Page>
             <Layout.Col>
@@ -20,11 +25,11 @@ const ProfilePage = () => {
                         </Layout.Row>
                     </Layout.Container>
                 </Layout.Row>
-                <Layout.Container className="max-w-4xl py-8 mt-24">
-                    <Layout.Grid className="grid-cols-3 gap-2">
-                        <Layout.Card>
+                <Layout.Container className="max-w-4xl py-8 mt-20">
+                    <Layout.Grid className="grid-cols-1 sm:grid-cols-3 gap-2">
+                        <Layout.Card className="col-span-1">
                             <Layout.Col className="gap-2 items-center">
-                                <Typography.Body className="medium text-secondary text-left w-full">Your Profile</Typography.Body>
+                                <Typography.Body className="font-semibold text-secondary text-left w-full">Your Profile</Typography.Body>
                                 <Avatar seed={auth?.data?.name} dimensions={[96, 96]} />
                                 <Layout.Col className="w-full divide-y divide-dark_secondary gap-3">
                                     <Typography.Caption className="text-left capitalize">{auth?.data?.name}</Typography.Caption>
@@ -32,9 +37,10 @@ const ProfilePage = () => {
                                 </Layout.Col>
                             </Layout.Col>
                         </Layout.Card>
-                        <Layout.Card className="col-span-2">
-                        <Typography.Body className="medium text-secondary text-left w-full">Your Progress</Typography.Body>
-                        </Layout.Card>
+                        <ProfileProgessProvider data={{ totalQuestions: props.totalQuestions, solvedQuestions: props.solvedQuestions }}>
+                            <ProfileProgress />
+                        </ProfileProgessProvider>
+                        <ProfileSolvedQuestions questions={props.solvedQuestions} />
                     </Layout.Grid>
                 </Layout.Container>
             </Layout.Col>
@@ -45,10 +51,26 @@ const ProfilePage = () => {
 export default ProfilePage;
 
 
-export const getServerSideProps = withAuthPage(async ctx => {
-    console.log(ctx.req.user)
-    return {
-        props: {
+export const getServerSideProps = withAuthPage(withURL(async ctx => {
+    try {
+        const questionsResponse = await axios.get(`${ctx.req.url}/api/questions`);
+        const questions = await questionsResponse.data;
+        const { data: submissionsData, error: submissionsError } =
+            await supabaseClient
+                .from("solved_submissions_view_4")
+                .select("*")
+                .eq("id", ctx.req.user);
+        if (submissionsError) throw submissionsError;
+        return {
+            props: {
+                solvedQuestions: submissionsData,
+                totalQuestions: questions
+            }
+        }
+    } catch (error) {
+        console.log(error)
+        return {
+            notFound: true
         }
     }
-})
+}))

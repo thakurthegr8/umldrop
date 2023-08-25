@@ -8,8 +8,8 @@ const AccountAvatarLink = (props) => {
         <Menu.Item
             as="div"
             onClick={() => null}
-            className="p-2 w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-white/10"
-        ><Link href={props.link}>
+            className="w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-white/10"
+        ><Link href={props.link} className="w-full p-2">
                 <Typography.Caption
                     className="text-sm"
                 >

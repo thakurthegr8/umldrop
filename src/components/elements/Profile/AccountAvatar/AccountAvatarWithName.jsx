@@ -12,11 +12,16 @@ const AccountAvatarWithName = () => {
     return (
         <Menu.Item>
             <Link href="/me">
-                <Layout.Row className="p-2 gap-2 items-center border-b dark:border-white/20">
+                <Layout.Row className="p-2 gap-2 items-center border-b dark:border-white/20 bg-dark_secondary/30">
                     <Avatar seed={name} />
-                    <Typography.Heading className="font-bold capitalize">
-                        {name}
-                    </Typography.Heading>
+                    <Layout.Col>
+                        <Typography.Heading className="font-bold capitalize">
+                            {name}
+                        </Typography.Heading>
+                        <Typography.Caption className="font-medium overflow-hidden text-secondary">
+                            {auth?.data?.id}
+                        </Typography.Caption>
+                    </Layout.Col>
                 </Layout.Row>
             </Link>
         </Menu.Item>
