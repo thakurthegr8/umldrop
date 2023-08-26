@@ -1,0 +1,9 @@
+.main {
+  @apply w-full overflow-hidden;
+}
+.main_container {
+  @apply max-w-4xl py-8 mt-24 overflow-hidden;
+}
+.main_container_hero_col {
+  @apply w-full gap-4 text-center items-center;
+}

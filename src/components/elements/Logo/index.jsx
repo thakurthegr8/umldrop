@@ -1,10 +1,11 @@
-import { LOGOTEXT } from '@/src/constants';
-import Link from 'next/link';
 import React from 'react'
+import Link from 'next/link';
+import styles from "./Logo.module.css";
+import { LOGOTEXT } from '@/src/constants';
 
 const Logo = () => {
   return (
-    <Link href="/" className="font-bold text-xl">{LOGOTEXT}</Link>
+    <Link href="/" className={styles.logo}>{LOGOTEXT}</Link>
   )
 }
 

@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import styles from "./NavbarFixed.module.css";
 import Layout from '../../utils/Layout';
 import Navbar from '.';
 
 const NavbarFixed = () => {
     return (
-        <Layout.Row className="p-2 border-b fixed inset-x-0 top-0 backdrop-blur-lg border-dark_secondary">
-            <Layout.Container className="max-w-4xl">
-                <Layout.Row className="justify-between items-center">
+        <Layout.Row className={styles.main}>
+            <Layout.Container className={styles.main_container}>
+                <Layout.Row className={styles.navbar_row}>
                     <Navbar />
                 </Layout.Row>
             </Layout.Container>
