@@ -1,18 +1,18 @@
 
 .easy_progress_bg{
-    @apply h-2 rounded-full bg-green-900;
+    @apply h-2 rounded-full bg-green-900 overflow-hidden;
 }
 .easy_progress{
     @apply h-2 rounded-full bg-green-500;
 }
 .medium_progress_bg{
-    @apply h-2 rounded-full bg-yellow-900;
+    @apply h-2 rounded-full bg-yellow-900 overflow-hidden;
 }
 .medium_progress{
     @apply h-2 rounded-full bg-yellow-500;
 }
 .hard_progress_bg{
-    @apply h-2 rounded-full bg-red-900;
+    @apply h-2 rounded-full bg-red-900 overflow-hidden;
 }
 .hard_progress{
     @apply h-2 rounded-full bg-red-500;

@@ -3,6 +3,7 @@ import ProfileSolvedQuestions from '@/src/components/blocks/Profile/SolvedQuesti
 import Avatar from '@/src/components/elements/Avatar';
 import Page from '@/src/components/pages';
 import Navbar from '@/src/components/sections/Navbar';
+import NavbarFixed from '@/src/components/sections/Navbar/NavbarFixed';
 import Layout from '@/src/components/utils/Layout';
 import Typography from '@/src/components/utils/Typography';
 import withAuthPage from '@/src/middlewares/withAuthPage';
@@ -18,13 +19,7 @@ const ProfilePage = (props) => {
     return (
         <Page>
             <Layout.Col>
-                <Layout.Row className="p-2 border-b fixed inset-x-0 top-0 backdrop-blur-lg border-dark_secondary">
-                    <Layout.Container className="max-w-4xl">
-                        <Layout.Row className="justify-between items-center">
-                            <Navbar />
-                        </Layout.Row>
-                    </Layout.Container>
-                </Layout.Row>
+                <NavbarFixed />
                 <Layout.Container className="max-w-4xl py-8 mt-20">
                     <Layout.Grid className="grid-cols-1 sm:grid-cols-3 gap-2">
                         <Layout.Card className="col-span-1">

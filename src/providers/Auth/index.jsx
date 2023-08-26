@@ -10,6 +10,10 @@ const AuthProvider = (props) => {
     method: "POST",
     url: "/api/auth/logout",
   });
+  const updateBasicInfoHandler = useFetch({
+    method: "PUT",
+    url: "/api/auth/update",
+  })
   const removeProfileImageHandler = useFetch({
     method: "DELETE",
     url: "/api/auth/profile-image",
@@ -18,7 +22,7 @@ const AuthProvider = (props) => {
     method: "PUT",
     url: "/api/auth/profile-image",
   });
-  
+
   const removeProfileImage = useMemo(() => {
     if (removeProfileImageHandler.data) {
       authHandlers.init.dispatch(null);
@@ -44,7 +48,18 @@ const AuthProvider = (props) => {
     updateProfileImageHandler.error,
     updateProfileImageHandler.loading,
   ]);
-  
+  const updateBasicInfo = useMemo(() => {
+    if (updateBasicInfoHandler.data) {
+      authHandlers.init.dispatch(null);
+    }
+    return {
+      ...updateBasicInfoHandler,
+    };
+  }, [
+    updateBasicInfoHandler.data,
+    updateBasicInfoHandler.error,
+    updateBasicInfoHandler.loading,
+  ]);
   return (
     <AuthContext.Provider
       value={{
@@ -52,6 +67,7 @@ const AuthProvider = (props) => {
         removeProfileImage,
         updateProfileImage,
         signoutHandler,
+        updateBasicInfo
       }}
     >
       {props.children}

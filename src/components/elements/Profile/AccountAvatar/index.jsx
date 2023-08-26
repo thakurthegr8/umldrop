@@ -27,7 +27,7 @@ const AccountAvatar = () => {
                 <Menu.Items className="absolute w-72 right-0 bg-general backdrop-blur-sm border-dark_secondary border rounded-xl shadow-md flex-col overflow-hidden divide-y divide-dark_secondary/50">
                     <AccountAvatarWithName />
                     <AccountAvatarLink text="Performance" link="/profile" />
-                    <AccountAvatarLink text="Account Settings" link="/account" />
+                    <AccountAvatarLink text="Settings" link="/settings" />
                     <AccountAvatarSignoutHandler />
                 </Menu.Items>
             </Menu>

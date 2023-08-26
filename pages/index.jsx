@@ -10,7 +10,7 @@ import HomeGlowingBlock from "@/src/components/blocks/Home/GlowingBlock";
 
 export default function Home(props) {
   return <Page>
-    <Layout.Col className="w-full">
+    <Layout.Col className="w-full overflow-hidden">
       <Layout.Row className="p-2 border-b fixed inset-x-0 backdrop-blur-lg border-dark_secondary">
         <Layout.Container className="max-w-4xl">
           <Layout.Row className="justify-between items-center">
@@ -18,7 +18,7 @@ export default function Home(props) {
           </Layout.Row>
         </Layout.Container>
       </Layout.Row>
-      <Layout.Container className="max-w-4xl py-8 mt-24">
+      <Layout.Container className="max-w-4xl py-8 mt-24 overflow-hidden">
         <HomeGlowingBlock />
         <Layout.Col className="w-full gap-4 text-center items-center">
           <HomeHeroBlock />
