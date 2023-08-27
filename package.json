@@ -29,6 +29,7 @@
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
     "momentjs": "^2.0.0",
+    "monaco-themes": "^0.4.4",
     "next": "13.4.13",
     "nprogress": "^0.2.0",
     "postcss": "8.4.27",
