@@ -11,5 +11,5 @@
     @apply text-left hidden md:flex;
 }
 .question_link_title{
-    @apply text-left hidden md:flex;
+    @apply text-left;
 }
