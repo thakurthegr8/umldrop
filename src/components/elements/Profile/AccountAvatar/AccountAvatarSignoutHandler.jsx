@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from "./AccountAvatar.module.css";
 import LogOutIcon from "@heroicons/react/20/solid/ArrowLeftOnRectangleIcon";
 import { Menu } from '@headlessui/react'
 import Typography from '@/src/components/utils/Typography';
@@ -8,16 +9,19 @@ import { useRouter } from 'next/router';
 const AccountAvatarSignoutHandler = () => {
     const auth = useAuth();
     const router = useRouter();
+    const signout = () => {
+        auth.signoutHandler.dispatch(null).then(res => router.reload("/"))
+    }
     return (
         <Menu.Item
             as="div"
             onClick={() => null}
-            className="p-2 w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-red-900/50 bg-red-900/30 text-red-500"
+            className={styles.signout_handler_main}
         >
-            <LogOutIcon className="w-6 h-6" />
+            <LogOutIcon className={styles.signout_handler_logout_icon} />
             <Typography.Caption
-                className="text-sm"
-                onClick={() => auth.signoutHandler.dispatch(null).then(res => router.reload("/"))}
+                className={styles.signout_handler_caption_text}
+                onClick={signout}
             >
                 Sign Out
             </Typography.Caption>

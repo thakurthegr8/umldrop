@@ -1,0 +1,15 @@
+.main_row{
+    @apply justify-between w-full backdrop:blur-2xl py-3 rounded-lg border border-secondary/30 bg-dark_secondary/50 px-4;
+}
+.main_col{
+    @apply divide-y divide-dark_secondary w-full;
+}
+.question_link_row{
+    @apply justify-between w-full py-2 px-4 flex hover:bg-dark_secondary/30 transition-all;
+}
+.question_link_company{
+    @apply text-left hidden md:flex;
+}
+.question_link_title{
+    @apply text-left hidden md:flex;
+}

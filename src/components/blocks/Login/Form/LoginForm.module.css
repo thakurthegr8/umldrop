@@ -1,0 +1,12 @@
+.main_container{
+    @apply max-w-sm pt-2 h-screen overflow-y-scroll col-span-2 lg:col-span-1;
+}
+.lightning_text{
+    @apply text-center my-4 font-semibold text-7xl;
+}
+.login_text{
+    @apply text-center my-4 font-semibold;
+}
+.form_col_layout{
+    @apply gap-4;
+}

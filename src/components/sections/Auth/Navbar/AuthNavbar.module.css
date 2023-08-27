@@ -1,0 +1,3 @@
+.main {
+  @apply col-span-2 items-center justify-between p-3 border-b backdrop-blur border-dark_secondary;
+}

@@ -1,39 +1,33 @@
 import React from "react";
+import styles from "@/styles/Home.module.css";
 import axios from "axios";
 import Page from "@/src/components/pages";
-import Navbar from "@/src/components/sections/Navbar";
 import Layout from "@/src/components/utils/Layout";
-import withURL from "@/src/middlewares/withUrl";
 import HomeHeroBlock from "@/src/components/blocks/Home/Hero";
 import HomeQuestionsTableBlock from "@/src/components/blocks/Home/QuestionsTable";
 import HomeGlowingBlock from "@/src/components/blocks/Home/GlowingBlock";
+import NavbarFixed from "@/src/components/sections/Navbar/NavbarFixed";
 
-export default function Home(props) {
-  return <Page>
-    <Layout.Col className="w-full overflow-hidden">
-      <Layout.Row className="p-2 border-b fixed inset-x-0 backdrop-blur-lg border-dark_secondary">
-        <Layout.Container className="max-w-4xl">
-          <Layout.Row className="justify-between items-center">
-            <Navbar />
-          </Layout.Row>
-        </Layout.Container>
-      </Layout.Row>
-      <Layout.Container className="max-w-4xl py-8 mt-24 overflow-hidden">
+const Home = (props) => {
+  return (<Page>
+    <Layout.Col className={styles.main}>
+      <NavbarFixed />
+      <Layout.Container className={styles.main_container}>
         <HomeGlowingBlock />
-        <Layout.Col className="w-full gap-4 text-center items-center">
+        <Layout.Col className={styles.main_container_hero_col}>
           <HomeHeroBlock />
           <HomeQuestionsTableBlock questions={props.data} />
         </Layout.Col>
       </Layout.Container>
     </Layout.Col>
-  </Page>;
+  </Page>);
 }
 
+export default Home;
 
-export const getServerSideProps = withURL(async (ctx) => {
-  const { url } = ctx.req;
+export const getStaticProps = async () => {
   try {
-    const res = await axios.get(`${url}/api/questions`);
+    const res = await axios.get(`http://ace-sql.vercel.app/api/questions`);
     const data = await res.data;
     return {
       props: {
@@ -46,4 +40,4 @@ export const getServerSideProps = withURL(async (ctx) => {
       notFound: true
     }
   }
-});
+};

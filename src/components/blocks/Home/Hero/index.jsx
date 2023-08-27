@@ -1,12 +1,13 @@
 import React from 'react'
+import styles from "./Hero.module.css";
 import Typography from '@/src/components/utils/Typography'
 import { HOME_DESCRIPTION, HOME_HEADING } from '@/src/constants/home';
 
 const HomeHeroBlock = () => {
     return (
         <>
-            <Typography.Title className="font-bold text-center text-5xl lg:text-8xl tracking-tighter leading-tight">{HOME_HEADING}</Typography.Title>
-            <Typography.Body className="text-center text-secondary max-w-3xl">{HOME_DESCRIPTION}</Typography.Body>
+            <Typography.Title className={styles.hero_heading}>{HOME_HEADING}</Typography.Title>
+            <Typography.Body className={styles.hero_description}>{HOME_DESCRIPTION}</Typography.Body>
         </>
     )
 }

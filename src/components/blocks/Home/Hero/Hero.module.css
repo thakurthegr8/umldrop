@@ -1,0 +1,6 @@
+.hero_heading{
+    @apply font-bold text-center text-5xl lg:text-8xl tracking-tighter leading-tight;
+}
+.hero_description{
+    @apply text-center text-secondary max-w-3xl;
+}

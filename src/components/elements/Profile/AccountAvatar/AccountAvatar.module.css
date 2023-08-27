@@ -1,0 +1,30 @@
+.main {
+  @apply relative z-10 backdrop-blur;
+}
+.main_menu_items {
+  @apply absolute w-72 right-0 bg-general backdrop-blur-sm border-dark_secondary border rounded-xl shadow-md flex-col overflow-hidden divide-y divide-dark_secondary/50;
+}
+.with_name_row {
+  @apply p-2 gap-2 items-center border-b dark:border-white/20 bg-dark_secondary/30;
+}
+.with_name_name {
+  @apply font-bold capitalize;
+}
+.with_name_email {
+  @apply font-medium overflow-hidden text-secondary;
+}
+.signout_handler_main {
+  @apply p-2 w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-red-900/50 bg-red-900/30 text-red-500;
+}
+.signout_handler_logout_icon {
+  @apply w-6 h-6;
+}
+.signout_handler_caption_text {
+  @apply text-sm w-full;
+}
+.avatar_link_main {
+  @apply w-full gap-2 text-left flex flex-row cursor-pointer items-center hover:bg-gray-100 dark:hover:bg-white/10;
+}
+.avatar_link_link {
+  @apply w-full p-2;
+}
