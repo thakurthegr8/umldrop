@@ -14,8 +14,13 @@ export default async function handler(req, res) {
       refresh_token: data.session.refresh_token,
     });
     const cookies = new Cookies(req, res);
-    cookies.set("access_token", data.session.access_token);
-    cookies.set("refresh_token", data.session.refresh_token);
+    const timestamp = new Date(moment.unix(data.session.expires_at).toString());
+    cookies.set("access_token", data.session.access_token, {
+      expires: timestamp,
+    });
+    cookies.set("refresh_token", data.session.refresh_token, {
+      expires: timestamp,
+    });
     const getUserData = await supabaseClient
       .from("users")
       .select("*")
