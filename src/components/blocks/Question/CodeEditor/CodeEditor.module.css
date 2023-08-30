@@ -1,0 +1,15 @@
+.status_container{
+    @apply sticky bottom-0 ;
+}
+.bottom_navbar{
+    @apply px-4 justify-end py-3 bg-general border-t border-dark_secondary;
+}
+.submission_status_main{
+    @apply z-10 justify-start bg-general max-h-[400px] overflow-y-scroll;
+}
+.submission_status_top_navbar{
+    @apply bg-general inset-x-0 p-2 justify-end sticky top-0;
+}
+.submission_status_sub_col{
+    @apply p-4 items-start border-t border-dark_secondary;
+}

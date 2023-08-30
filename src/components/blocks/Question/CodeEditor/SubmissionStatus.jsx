@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import styles from "./CodeEditor.module.css";
 import CloseIcon from "@heroicons/react/24/solid/XMarkIcon";
 import OpenIcon from "@heroicons/react/24/solid/ChevronUpIcon";
 import Layout from '@/src/components/utils/Layout'
@@ -7,7 +8,7 @@ import Typography from '@/src/components/utils/Typography'
 import Button from '@/src/components/utils/Button'
 
 const getColumns = (obj) => {
-    if (!obj) return {};
+    if (!obj) return [];
     return Object.keys(obj).map((item) => ({
         placeholder: item,
         key: item
@@ -18,7 +19,7 @@ const SolvedStatus = (props) => {
     const { payload } = props;
     return <><Typography.Subtitle className="font-bold">Accepted</Typography.Subtitle>
         {payload?.payload &&
-            <Layout.Col className="gap-3 ">
+            <Layout.Col className="gap-3">
                 <Typography.Heading>Expected Output</Typography.Heading>
                 <Table cols={getColumns(payload.payload.adminQueryResult[0])} dataset={payload.payload.adminQueryResult} />
                 <Typography.Heading>Your Output</Typography.Heading>
@@ -53,15 +54,14 @@ const SubmissionStatus = (props) => {
     const handleShowStatus = () => {
         setShowStatus(prev => !prev);
     }
-    console.log(runCode)
     return (
-        <Layout.Col className="z-10 justify-start bg-general max-h-[400px] overflow-y-scroll">
-            <Layout.Row className=" bg-general inset-x-0 p-2 justify-end sticky top-0">
+        <Layout.Col className={styles.submission_status_main}>
+            <Layout.Row className={styles.submission_status_top_navbar}>
                 <Button className="btn-icon" onClick={handleShowStatus}>
                     {showStatus ? <CloseIcon className='w-6 h-6 aspect-square' /> : <OpenIcon className='w-6 h-6 aspect-square' />}
                 </Button>
             </Layout.Row>
-            {showStatus && <Layout.Col className="p-4 items-start border-t border-dark_secondary">
+            {showStatus && <Layout.Col className={styles.submission_status_sub_col}>
                 {runCode.data?.data?.codeResult && <SolvedStatus payload={runCode.data.data.codeResult} />}
                 {runCode.error && <RejectedStatus payload={runCode.error.error} />}
             </Layout.Col>}

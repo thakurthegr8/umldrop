@@ -1,0 +1,15 @@
+.main{
+    @apply h-screen bg-dark_secondary/40  items-start overflow-y-scroll pb-32 relative;
+}
+.main_tab_list{
+    @apply outline-none items-center divide-x  divide-dark_secondary border-b border-dark_secondary bg-general w-full sticky top-0 inset-x-0;
+}
+.main_tab_list_tab{
+    @apply font-semibold h-full outline-none rounded-none p-0 bg-transparent capitalize hover:bg-dark_secondary;
+}
+.main_tab_list_tab_active{
+    @apply bg-dark_secondary/40 p-4;
+}
+.main_tab_panels{
+    @apply p-4 w-full;
+}
