@@ -14,7 +14,7 @@ const Navbar = () => {
             <Logo />
             <AccountAvatar />
             {!auth.data && <Layout.Row className={styles.navbar_row}>
-                <Link href="/register"><Button className="btn-primary">Register</Button></Link>
+                <Link href="/register"><Button className="btn-icon">Register</Button></Link>
                 <Link href="/login"><Button className="btn-secondary">Login</Button></Link>
             </Layout.Row>}
         </>

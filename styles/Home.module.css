@@ -1,5 +1,5 @@
 .main {
-  @apply w-full overflow-hidden;
+  @apply w-full overflow-hidden items-center relative justify-center;
 }
 .main_container {
   @apply max-w-4xl py-8 mt-24 overflow-hidden;
