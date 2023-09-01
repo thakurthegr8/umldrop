@@ -8,6 +8,7 @@ import Typography from '@/src/components/utils/Typography';
 import { Tab } from '@headlessui/react';
 import SettingsAccountBlock from '@/src/components/blocks/Settings/Main/Account';
 import withAuthPage from '@/src/middlewares/withAuthPage';
+import SettingsProfileBlock from '@/src/components/blocks/Settings/Main/Profile';
 
 const SettingsPage = (props) => {
     const auth = useAuth();
@@ -37,9 +38,7 @@ const SettingsPage = (props) => {
                             <Layout.Card className="md:w-2/3">
                                 <Tab.Panels>
                                     <SettingsAccountBlock />
-                                    <Tab.Panel>
-                                        <Typography.Heading>Your Profile</Typography.Heading>
-                                    </Tab.Panel>
+                                    <SettingsProfileBlock />
                                 </Tab.Panels>
                             </Layout.Card>
                         </Layout.Col>

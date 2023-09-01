@@ -1,4 +1,3 @@
-import ProfileProgessProvider from '@/src/providers/Profile/Progress';
 import { Combobox } from '@headlessui/react';
 import ChevronUpDownIcon from '@heroicons/react/24/solid/ChevronUpDownIcon';
 import React, { useState } from 'react'

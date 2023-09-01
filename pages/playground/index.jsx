@@ -3,16 +3,10 @@ import axios from "axios";
 import Layout from "@/src/components/utils/Layout";
 import withURL from "@/src/middlewares/withUrl";
 import QuestionProvider from "@/src/providers/QuestionProvider";
-import CodeEditor from "@/src/components/blocks/Question/CodeEditor";
+// import CodeEditor from "@/src/components/blocks/Question/CodeEditor";
 import Page from "@/src/components/pages";
-import { LOGOTEXT } from "@/src/constants";
-import QuestionNavbar from "@/src/components/blocks/Question/Navbar";
-import MinusIcon from "@heroicons/react/20/solid/MagnifyingGlassMinusIcon";
-import PlusIcon from "@heroicons/react/20/solid/MagnifyingGlassPlusIcon";
-import ScaleIcon from "@heroicons/react/20/solid/ArrowsPointingOutIcon"
-import Image from "next/image";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import Button from "@/src/components/utils/Button";
+import PlaygroundNavbar from "@/src/components/blocks/Playground/Navbar";
+import CodeEditor from "@/src/components/blocks/Playground/CodeEditor";
 
 const loader = ({ src }) => src;
 
@@ -21,7 +15,7 @@ const PlaygroundPage = (props) => {
    
     return <Page>
         <Layout.Grid className="w-full fixed bottom-0 inset-0 grid-cols-2">
-            <QuestionNavbar />
+            <PlaygroundNavbar />
             <QuestionProvider payload={props}>
                 <Layout.Col className="w-full relative border-dark_secondary">
                     <CodeEditor setImage={setImage} />
