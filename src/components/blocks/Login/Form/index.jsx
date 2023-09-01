@@ -14,8 +14,7 @@ const LoginFormBlock = () => {
     }
     return (
         <Layout.Container className={styles.main_container}>
-            <Typography.Title className={styles.lightning_text}>⚡️</Typography.Title>
-            <Typography.Heading className={styles.login_text}>Login to Ace SQL</Typography.Heading>
+            <Typography.Heading className={styles.login_text}>Login to UMLDROP</Typography.Heading>
             <Form onSubmit={onSubmit} autoComplete="off">
                 <Layout.Col className={styles.form_col_layout}>
                     <Form.Input type="email" placeholder="Enter email" name="email" />

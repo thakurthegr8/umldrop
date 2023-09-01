@@ -8,7 +8,7 @@ import { LOGOTEXT } from '@/src/constants';
 
 const RegisterPage = () => {
     return (
-        <Page page={`${LOGOTEXT} | Register with ace sql`}>
+        <Page page={`${LOGOTEXT} | Register with umldrop`}>
             <Layout.Grid className="fixed inset-0 grid-cols-2">
                 <AuthNavbar />
                 <RegisterFormBlock />

@@ -1,3 +1,3 @@
 .main{
-    @apply border-l border-dark_secondary hidden lg:flex bg-no-repeat bg-[url('/assets/hero.png')] bg-cover bg-center;
+    @apply border-l border-dark_secondary hidden lg:flex bg-no-repeat bg-[url('/assets/login_landing.jpeg')] bg-cover bg-center;
 }

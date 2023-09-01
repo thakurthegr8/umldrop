@@ -3,7 +3,7 @@ import React from 'react'
 
 const RegisterHeroBlock = () => {
     return (
-        <Layout.Col className="hidden lg:flex bg-no-repeat bg-[url('/assets/og.png')] border-l border-dark_secondary bg-cover bg-center" >
+        <Layout.Col className="hidden lg:flex bg-no-repeat bg-[url('/assets/register_landing.jpeg')] border-l border-dark_secondary bg-cover bg-center" >
         </Layout.Col>
     )
 }

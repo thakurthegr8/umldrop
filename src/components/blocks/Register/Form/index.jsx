@@ -19,8 +19,7 @@ const RegisterFormBlock = () => {
     }
     return (
         <Layout.Container className="max-w-sm pt-2 h-screen overflow-y-scroll col-span-2 lg:col-span-1">
-            <Typography.Title className="text-center my-4 font-semibold text-7xl ">⚡️</Typography.Title>
-            <Typography.Heading className="text-center my-4 font-semibold">Register With Ace SQL</Typography.Heading>
+            <Typography.Heading className="text-center my-4 font-semibold">Register With UMLDROP</Typography.Heading>
             <Form onSubmit={onSubmit} autoComplete="off">
                 <Layout.Col className="gap-4">
                     <Form.Input type="text" placeholder="Enter name" name="name" required />

@@ -10,8 +10,9 @@ const CustomEditor = (props) => {
     const theme = useLocalStorage({ fallback: "Monokai", key: "theme" });
     const handleEditorChange = (editorResult) => {
         props.localStorageInstance.setItem(props.localStorageKey, editorResult);
+        props.onChangeHandler(editorResult);
     }
-    const setTheme = async (value)=>{
+    const setTheme = async (value) => {
         const currTheme = await import(`monaco-themes/themes/${value}.json`).then((mod) => mod);
         monaco.editor.defineTheme("my-theme", currTheme);
         monaco.editor.setTheme('my-theme');
@@ -28,11 +29,11 @@ const CustomEditor = (props) => {
         onEditorMount();
     }, [monaco]);
     return (
-        <> 
-        <Layout.Row className="p-2 relative">
-            <CustomComboBox placeholder="Select theme" list={Object.values(themes)} onChange={onChangeTheme} value="Your theme" />
-        </Layout.Row>
-            <Editor onChange={handleEditorChange} language="sql" height="100%" defaultValue={props.localStorageInstance.value ? props.localStorageInstance.value : props.seed} theme="my-theme"/>
+        <>
+            <Layout.Row className="p-2 relative">
+                <CustomComboBox placeholder="Select theme" list={Object.values(themes)} onChange={onChangeTheme} value="Your theme" />
+            </Layout.Row>
+            <Editor onChange={handleEditorChange} language="java" height="100%" defaultValue={props.localStorageInstance.value ? props.localStorageInstance.value : props.seed} theme="my-theme" />
         </>
 
     )
