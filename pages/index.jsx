@@ -6,7 +6,7 @@ import HomeHeroBlock from "@/src/components/blocks/Home/Hero";
 import HomeGlowingBlock from "@/src/components/blocks/Home/GlowingBlock";
 import NavbarFixed from "@/src/components/sections/Navbar/NavbarFixed";
 
-const Home = (props) => {
+const Home = () => {
   return (<Page>
     <Layout.Col className={styles.main}>
       <NavbarFixed />
@@ -21,9 +21,3 @@ const Home = (props) => {
 }
 
 export default Home;
-
-export const getStaticProps = async () => {
-  return {
-    props: {}
-  }
-};

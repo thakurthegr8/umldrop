@@ -32,10 +32,6 @@ const ProfilePage = (props) => {
                                 </Layout.Col>
                             </Layout.Col>
                         </Layout.Card>
-                        <ProfileProgessProvider data={{ totalQuestions: props.totalQuestions, solvedQuestions: props.solvedQuestions }}>
-                            <ProfileProgress />
-                        </ProfileProgessProvider>
-                        <ProfileSolvedQuestions questions={props.solvedQuestions} />
                     </Layout.Grid>
                 </Layout.Container>
             </Layout.Col>
@@ -46,26 +42,3 @@ const ProfilePage = (props) => {
 export default ProfilePage;
 
 
-export const getServerSideProps = withAuthPage(withURL(async ctx => {
-    try {
-        const questionsResponse = await axios.get(`${ctx.req.url}/api/questions`);
-        const questions = await questionsResponse.data;
-        const { data: submissionsData, error: submissionsError } =
-            await supabaseClient
-                .from("solved_submissions_view_4")
-                .select("*")
-                .eq("id", ctx.req.user);
-        if (submissionsError) throw submissionsError;
-        return {
-            props: {
-                solvedQuestions: submissionsData,
-                totalQuestions: questions
-            }
-        }
-    } catch (error) {
-        console.log(error)
-        return {
-            notFound: true
-        }
-    }
-}))

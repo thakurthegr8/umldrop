@@ -16,10 +16,12 @@ const HomeHeroBlock = () => {
         <Typography.Subtitle className={styles.hero_heading}>{HOME_HEADING}</Typography.Subtitle>
         <Typography.Heading className={styles.hero_description}>{HOME_DESCRIPTION}</Typography.Heading>
         <Layout.Col className="md:flex-row gap-2 w-full md:w-auto">
+            <Link href="/register">
             <Button className="btn-primary rounded-full btn-lg hover:gap-2 transition-all">
                 <Typography.Caption className="text-lg font-semibold">Start Umldrop today</Typography.Caption>
                 <ArrowLeftOnRectangleIcon className="w-8 h-8" />
             </Button>
+            </Link>
             <Link href="/playground">
                 <Button className="btn-icon rounded-full btn-lg hover:gap-2 transition-all">
                     <Typography.Caption className="text-lg font-semibold">View Demo</Typography.Caption>
