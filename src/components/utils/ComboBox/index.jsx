@@ -1,6 +1,6 @@
+import React, { useState } from 'react'
 import { Combobox } from '@headlessui/react';
 import ChevronUpDownIcon from '@heroicons/react/24/solid/ChevronUpDownIcon';
-import React, { useState } from 'react'
 import Layout from '../Layout';
 import Typography from '../Typography';
 

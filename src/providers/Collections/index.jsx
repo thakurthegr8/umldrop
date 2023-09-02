@@ -1,4 +1,6 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { toast } from "react-toastify";
+import useFetch from "@/src/hooks/general/useFetch";
 
 const CollectionsContext = createContext(null);
 
@@ -6,10 +8,14 @@ export const useCollections = () => {
     const ctx = useContext(CollectionsContext);
     return ctx;
 }
-
-
 const CollectionsProvider = (props) => {
-    return <CollectionsContext.Provider value={props.value}>{props.children}</CollectionsContext.Provider>
+    const { user } = props.value;
+    const [collections, setCollections] = useState(props.value.collections);
+    const addCollections = useFetch({ url: "/api/collections/add", method: "POST" });
+    const mutate = (handler) => {
+        setCollections(handler);
+    }
+    return <CollectionsContext.Provider value={{ collections, user, addCollections, mutate }}>{props.children}</CollectionsContext.Provider>
 }
 
 export default CollectionsProvider;

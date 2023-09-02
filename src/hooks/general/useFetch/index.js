@@ -10,72 +10,96 @@ const useFetch = (props) => {
     setError(null);
     setLoading(true);
     setData(null);
+    const result = { data: null, error: null, loading: true };
     try {
       const res = await axios.get(props.url);
       const resData = await res.data;
+      result.data = resData;
       setData(resData);
     } catch (error) {
+      result.error = error.response.data;
       setError(error.response.data);
     } finally {
+      result.loading = false;
       setLoading(false);
     }
+    return result;
   };
   const postData = async (payload) => {
     setError(null);
     setLoading(true);
     setData(null);
+    const result = { data: null, error: null, loading: true };
     try {
       const res = await axios.post(props.url, payload);
       const resData = await res.data;
+      result.data = resData;
       setData(resData);
     } catch (error) {
+      result.error = error.response.data;
       setError(error.response.data);
     } finally {
+      result.loading = false;
       setLoading(false);
     }
+    return result;
   };
   const putData = async (payload) => {
     setError(null);
     setLoading(true);
     setData(null);
+    const result = { data: null, error: null, loading: true };
     try {
       const res = await axios.put(props.url, payload);
       const resData = await res.data;
+      result.data = resData;
       setData(resData);
     } catch (error) {
+      result.error = error.response.data;
       setError(error.response.data);
     } finally {
+      result.loading = false;
       setLoading(false);
     }
+    return result;
   };
   const deleteData = async (payload) => {
     setError(null);
     setLoading(true);
     setData(null);
+    const result = { data: null, error: null, loading: true };
     try {
       const res = await axios.delete(
         `${props.url}/?${generateQueryString(payload)}`
       );
       const resData = await res.data;
+      result.data = resData;
       setData(resData);
     } catch (error) {
       setError(error.response.data);
+      result.error = error.response.data;
     } finally {
       setLoading(false);
+      result.loading = false;
     }
+    return result;
   };
   const dispatch = async (payload = null) => {
     return new Promise((resolve, reject) => {
       if (props.method === "GET") {
-        resolve(getData());
+        return resolve(getData());
       } else if (props.method === "POST") {
-        resolve(postData(payload));
+        return resolve(postData(payload));
       } else if (props.method === "PUT") {
-        resolve(putData(payload));
+        return resolve(putData(payload));
       } else if (props.method === "DELETE") {
-        resolve(deleteData(payload));
+        return resolve(deleteData(payload));
       }
-      reject();
+      return reject({
+        data,
+        error,
+        loading,
+      });
     });
   };
 
@@ -83,7 +107,7 @@ const useFetch = (props) => {
   useEffect(() => {
     if (props.method === "GET") getData();
   }, []);
-  return { data,setData, error, loading, dispatch };
+  return { data, setData, error, loading, dispatch };
 };
 
 export default useFetch;
