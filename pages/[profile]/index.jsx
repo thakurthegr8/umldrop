@@ -37,6 +37,10 @@ export default ProfilePage;
 
 
 export const getServerSideProps = async (ctx) => {
+    ctx.res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
     const { profile } = ctx.query;
     try {
         const user = await supabaseClient.from("users").select("*").eq("username", profile).single();
