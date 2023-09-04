@@ -14,11 +14,24 @@ import { toast } from 'react-toastify';
 
 const CodeEditor = (props) => {
     const auth = useAuth();
+    const updateDiagram = useFetch({ url: "/api/diagrams/update", method: "PUT" })
     const diagram = useContext(DiagramContext);
     const currentDiagram = diagram?.encoded_string ? PlantUmlEncoder.decode(diagram.encoded_string) : "@startuml\n@enduml";
     const editorHistory = useLocalStorage({ key: "current_Code", fallback: "" })
     const handleSubmitCode = async () => {
-
+        if (diagram?.action_type) {
+            if (diagram.action_type === "add") {
+                console.log("added");
+            } else if (diagram.action_type == "edit") {
+                if (!props?.image) return;
+                const payload = {
+                    id: diagram.id,
+                    collection_name: diagram.collection_name,
+                    encoded_string: props.image
+                }
+                await updateDiagram.dispatch(payload);
+            }
+        }
     }
     const onChangeHandler = (value) => {
         try {
@@ -33,7 +46,7 @@ const CodeEditor = (props) => {
         <CustomEditor localStorageInstance={editorHistory} localStorageKey={"current_code"} seed={currentDiagram} onChangeHandler={onChangeHandler} />
         <Layout.Col className={styles.status_container}>
             {auth.data && <Layout.Row className={styles.bottom_navbar}>
-                <Button className="btn-primary font-medium" onClick={null}>Save</Button>
+                <Button loading={updateDiagram.loading} className="btn-primary font-medium" onClick={handleSubmitCode}>Save</Button>
             </Layout.Row>}
         </Layout.Col>
     </>

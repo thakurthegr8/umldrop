@@ -18,26 +18,28 @@ import { useAuth } from '@/src/providers/Auth';
 import Modal from '@/src/components/utils/Modal';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Drawer from '@/src/components/utils/Drawer';
+import Form from '@/src/components/utils/Form';
 
 const CollectionPage = (props) => {
     const { collection, diagrams } = props;
     const router = useRouter();
     const auth = useAuth();
     const [isModalOpen, setShowModal] = useState(false);
+    const [isAddDrawerOpen, setShowDrawer] = useState(false);
     const [diagram, setCurrentDiagram] = useState(null);
-    const toggle = () => {
+
+    const toggleModal = () => {
         setShowModal(prev => !prev);
     }
-    const buildEditLink = (payload) => {
-        router.push("/playground", {
-            query: {
-                id: payload.id,
-                collection_name: payload.collection_name,
-                encoded_string: payload.encoded_string
-            }
-        })
-        // console.log(url.toString());
+
+    const toggleDrawer = () => {
+        setShowDrawer(prev => !prev);
     }
+    const onAddDiagramFormSubmit = (payload) => {
+        router.push(`/playground?action_type=add&name=${payload.name}&collection_name=${payload.collection_name}`);
+    }
+
 
     return (
         <Page page={`${LOGOTEXT} | ${collection.name}`}>
@@ -53,7 +55,7 @@ const CollectionPage = (props) => {
                             <Typography.Title className="font-bold">{collection.name}</Typography.Title>
                             <Typography.Body className="text-white/80 first-letter:capitalize">{collection.description}</Typography.Body>
                         </Layout.Col>
-                        {auth.data && <Button className="btn-secondary font-semibold">Add New Diagram <PlusIcon className='w-5 h-5 ml-1 font-bold' /></Button>}
+                        {auth.data && <Button className="btn-secondary font-semibold" onClick={toggleDrawer}>Add New Diagram <PlusIcon className='w-5 h-5 ml-1 font-bold' /></Button>}
                     </Layout.Col>
                     <Layout.Col>
                         {diagrams.length !== 0 ?
@@ -68,9 +70,9 @@ const CollectionPage = (props) => {
                                         <Layout.Row className="gap-2">
                                             <Button className="btn-secondary text-xs" onClick={() => {
                                                 setCurrentDiagram(item);
-                                                toggle();
+                                                toggleModal();
                                             }}><EyeIcon className='w-5 h-5 font-bold' /></Button>
-                                            <Link href={`/playground/edit?id=${item.id}&collection_name=${item.id}&encoded_string=${item.encoded_string}`}>
+                                            <Link href={`/playground?action_type=edit&id=${item.id}&collection_name=${item.collection_name}&encoded_string=${item.encoded_string}`}>
                                                 <Button className="btn-icon"><PencilIcon className='w-4 h-4 font-bold' /></Button>
                                             </Link>
                                         </Layout.Row>
@@ -81,7 +83,16 @@ const CollectionPage = (props) => {
                     </Layout.Col>
                 </Layout.Col>
             </Layout.Container>
-            <Modal open={isModalOpen} onClose={toggle} title="View Diagram">
+            <Drawer open={isAddDrawerOpen} onClose={toggleDrawer} title="Add Diagram">
+                <Form onSubmit={onAddDiagramFormSubmit}>
+                    <Layout.Col className="p-4 gap-2">
+                        <Form.Input type="text" name="name" placeholder="Enter name..." required/>
+                        <Form.Input type="text" name="collection_name" placeholder="Enter collection name..." required/>
+                        <Button className="btn-primary">Create Diagram</Button>
+                    </Layout.Col>
+                </Form>
+            </Drawer>
+            <Modal open={isModalOpen} onClose={toggleModal} title="View Diagram">
                 <Layout.Col className="h-full w-full">
                     <Layout.Row className="p-4 justify-end gap-2">
                         <Button className="bg-dark_secondary/50 border border-dark_secondary">Download<DownloadIcon className='w-4 h-4 ml-1' /></Button>
