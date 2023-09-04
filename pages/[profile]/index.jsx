@@ -11,7 +11,6 @@ import ProfileProvider from '@/src/providers/Profile';
 import CollectionsProvider from '@/src/providers/Collections';
 
 const ProfilePage = (props) => {
-    console.log(props)
     return (
         <Page page={`${LOGOTEXT} | Collections`}>
             <Tab.Group>

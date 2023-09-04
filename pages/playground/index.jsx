@@ -12,7 +12,7 @@ const loader = ({ src }) => src;
 
 const PlaygroundPage = (props) => {
     const [image, setImage] = useState(null);
-   
+
     return <Page>
         <Layout.Grid className="w-full fixed bottom-0 inset-0 grid-cols-2">
             <PlaygroundNavbar />

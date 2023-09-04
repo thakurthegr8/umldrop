@@ -1,13 +1,13 @@
 import React, { createContext } from 'react'
 
-export const QuestionContext = createContext(null);
+export const DiagramContext = createContext(null);
 
-const QuestionProvider = (props) => {
+const DiagramProvider = (props) => {
     return (
-        <QuestionContext.Provider value={props.payload}>
+        <DiagramContext.Provider value={props.payload}>
             {props.children}
-        </QuestionContext.Provider>
+        </DiagramContext.Provider>
     )
 }
 
-export default QuestionProvider;
+export default DiagramProvider;
