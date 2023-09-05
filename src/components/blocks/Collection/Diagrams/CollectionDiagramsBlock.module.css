@@ -1,0 +1,31 @@
+.main_grid_layout {
+  @apply sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+
+.diagram_item_main {
+  @apply border border-dark_secondary divide-y divide-dark_secondary rounded-md overflow-hidden hover:bg-dark_secondary/50 cursor-pointer justify-between;
+}
+.diagram_item_backdrop {
+  @apply w-full h-44 bg-no-repeat bg-cover;
+}
+.diagram_item_description {
+  @apply p-2 gap-2;
+}
+.diagram_item_name {
+  @apply capitalize font-medium overflow-hidden text-ellipsis;
+}
+.diagram_item_created_at {
+  @apply capitalize text-xs text-white/80;
+}
+.diagram_item_actions_panel {
+  @apply gap-2;
+}
+.diagram_item_view_btn {
+  @apply w-full;
+}
+.diagram_item_view_btn_icon {
+  @apply w-5 h-5 font-bold ml-1;
+}
+.diagram_item_edit_btn_icon {
+  @apply w-4 h-4 font-bold;
+}

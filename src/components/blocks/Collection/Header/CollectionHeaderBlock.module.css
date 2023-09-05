@@ -1,0 +1,18 @@
+.main {
+  @apply sm:items-center sm:justify-between sm:flex-row py-4 gap-4;
+}
+.collection_name {
+  @apply font-bold;
+}
+.collection_description {
+  @apply text-white/80 first-letter:capitalize;
+}
+.add_diagram_btn {
+  @apply font-semibold;
+}
+.add_diagram_btn_icon{
+    @apply w-5 h-5 ml-1 font-bold;
+}
+.add_diagram_form_layout{
+    @apply p-4 gap-2;
+}

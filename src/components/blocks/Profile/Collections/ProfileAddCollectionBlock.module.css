@@ -1,0 +1,18 @@
+.main {
+  @apply p-4;
+}
+.main_col_layout {
+  @apply gap-4;
+}
+.collection_items_layout {
+  @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+.add_collection_element_main{
+    @apply justify-start
+}
+.add_collection_element_add_btn_icon{
+    @apply w-5 h-5 text-white ml-1;
+}
+.add_collection_element_layout{
+    @apply p-4 gap-4;
+}
