@@ -13,12 +13,12 @@ const Navbar = () => {
         <>
             <Logo />
             <Layout.Row className={styles.navbar_row}>
+                <Link className="btn-icon text-center" href="/playground"><PlaygroundIcon className="w-6 h-6" /></Link>
                 <AccountAvatar />
                 {!auth.data && <>
                     <Link href="/register"><Button className="btn-icon">Register</Button></Link>
                     <Link href="/login"><Button className="btn-secondary">Login</Button></Link>
                 </>}
-                <Link className="btn-icon text-center" href="/playground"><PlaygroundIcon className="w-6 h-6" /></Link>
             </Layout.Row>
         </>
     )

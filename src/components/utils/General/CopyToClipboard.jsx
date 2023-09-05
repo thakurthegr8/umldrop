@@ -7,7 +7,7 @@ import CheckedIcon from "@heroicons/react/24/outline/CheckIcon"
 const CopyToClipboard = (props) => {
     const [copied, setCopied] = useState(false);
     const copy = () => {
-        navigator.clipboard.writeText(props.text);
+        navigator.clipboard.writeText(props?.text);
         toast("copied to clipboard", { type: "success" });
         setCopied(true);
         setTimeout(() => {

@@ -26,8 +26,8 @@ const ProfileAddCollectionElement = () => {
     const toggle = () => {
         toggleDrawer(prevValue => !prevValue);
     }
-    if (!auth.data) return null;
-    return auth.data ? <Layout.Row className="justify-start">
+    if (!auth.data || auth.data.username !== collections.user.username) return null;
+    return <Layout.Row className="justify-start">
         <Button className="btn-primary" onClick={toggle}>New</Button>
         <Drawer open={drawerOpen} onClose={toggle} title="Add Collection">
             <Form onSubmit={onSubmit}>
@@ -40,7 +40,7 @@ const ProfileAddCollectionElement = () => {
                 </Layout.Col>
             </Form>
         </Drawer>
-    </Layout.Row> : null;
+    </Layout.Row>;
 
 }
 

@@ -12,7 +12,7 @@ const AccountAvatarWithName = () => {
     const name = auth?.data?.name;
     return (
         <Menu.Item>
-            <Link href="/profile">
+            <Link href={`/${auth.data?.username}`}>
                 <Layout.Row className={styles.with_name_row}>
                     <Avatar seed={name} />
                     <Layout.Col>
