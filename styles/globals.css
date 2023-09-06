@@ -30,7 +30,7 @@
   background-color: #333;
 }
 body {
-  @apply bg-black text-white;
+  @apply bg-general text-white;
 }
 /* tables */
 table{
@@ -52,9 +52,9 @@ table{
 
 button {
   @apply relative overflow-hidden rounded-lg font-medium text-sm py-1 px-2 md:py-1.5 md:px-3 flex justify-center items-center active:scale-95 transition-all tracking-tight 
-   disabled:hover:bg-gray-300  disabled:text-gray-400  disabled:active:scale-100
-   dark:disabled:bg-white/10 dark:disabled:text-gray-300 dark:disabled:border-none
-   dark:disabled:hover:bg-white/10
+   disabled:hover:bg-gray-300   disabled:active:scale-100
+   disabled:bg-white/10 disabled:text-gray-300 disabled:border-none
+   disabled:hover:bg-white/10
    ;
 }
 
@@ -73,7 +73,7 @@ button {
   @apply bg-secondary border border-secondary active:bg-secondary/75 hover:bg-secondary/75 text-black;
 }
 .btn-general {
-  @apply bg-general dark:bg-white border border-general active:bg-general/75 dark:active:bg-white/75 dark:hover:bg-white/75 hover:bg-general/75 text-white dark:text-general;
+  @apply  bg-white border border-general  active:bg-white/75 hover:bg-white/75  text-white dark:text-general;
 }
 
 /* outlined */
@@ -107,7 +107,7 @@ button {
 /* Icon */
 
 .btn-icon {
-  @apply rounded-full text-black dark:text-white bg-transparent p-2 hover:bg-gray-200 dark:hover:bg-white/20 active:bg-gray-300;
+  @apply rounded-full text-white bg-transparent p-2  hover:bg-white/20 active:bg-white/30;
 }
 
 /* typography */
@@ -133,7 +133,7 @@ span {
 input,
 textarea,
 select {
-  @apply bg-dark_secondary/50 outline-none p-3 rounded-lg border dark:border-white/20 border-gray-300 focus:border-general dark:focus:border-white transition-all font-normal  text-sm;
+  @apply bg-dark_secondary/50 outline-none p-3 rounded-lg border border-white/20   focus:border-white transition-all font-normal  text-sm;
 }
 input::-webkit-color-swatch {
   border: none;
@@ -145,21 +145,6 @@ input::-webkit-color-swatch {
   @apply text-sm p-1 capitalize;
 }
 
-/* neubrutalism */
-.neu-bg{
-  box-shadow:0.25rem 0.25rem 0px;
-
-}
-.neu-bg-general{
-  @apply border  border-secondary dark:border-white/30 shadow-secondary dark:shadow-white/30;
-}
-.neu-bg-primary{
-  @apply border border-primary shadow-primary dark:shadow-primary;
-}
-
-.neu-ref-landing{
-  box-shadow:0.25rem 0.25rem 0px #000000;
-}
 .mkdwn p{
   @apply text-secondary;
 }
