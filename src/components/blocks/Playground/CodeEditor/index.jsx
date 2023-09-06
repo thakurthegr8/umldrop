@@ -21,6 +21,7 @@ const CodeEditor = (props) => {
     const diagram = useContext(DiagramContext);
     const currentDiagram = diagram?.encoded_string ? PlantUmlEncoder.decode(diagram.encoded_string) : "@startuml\n@enduml";
     const editorHistory = useLocalStorage({ key: "current_Code", fallback: "" })
+
     const handleSubmitCode = async () => {
         if (!props?.image) return;
         if (diagram?.action_type) {
@@ -46,6 +47,7 @@ const CodeEditor = (props) => {
             }
         }
     }
+
     const onChangeHandler = (value) => {
         try {
             const encodedString = PlantUmlEncoder.encode(value);
@@ -56,7 +58,7 @@ const CodeEditor = (props) => {
         }
     }
     return <>
-        <CustomEditor localStorageInstance={editorHistory} localStorageKey={"current_code"} seed={currentDiagram} onChangeHandler={onChangeHandler} />
+        <CustomEditor localStorageInstance={editorHistory} localStorageKey="current_code" seed={currentDiagram} onChangeHandler={onChangeHandler} />
         <Layout.Col className={styles.status_container}>
             {auth.data && diagram?.action_type && <Layout.Row className={styles.bottom_navbar}>
                 <Button disabled={!props.image} loading={updateDiagram.loading || addDiagram.loading} className="btn-primary font-medium" onClick={handleSubmitCode}>Save</Button>

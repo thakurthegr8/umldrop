@@ -1,0 +1,33 @@
+.main {
+  @apply h-full ;
+}
+.main_layout {
+  @apply grid-cols-1 md:grid-cols-4 gap-2 p-2 md:p-0 md:divide-x divide-dark_secondary;
+}
+.profile_info {
+  @apply gap-4 py-4;
+}
+.avatar_lg_wrapper {
+  @apply hidden md:block;
+}
+.more_info_wrapper {
+  @apply gap-4;
+}
+.avatar_sm_wrapper {
+  @apply block md:hidden;
+}
+.more_info {
+  @apply justify-center;
+}
+.profile_name {
+  @apply font-semibold capitalize;
+}
+.profile_username {
+  @apply text-white/50;
+}
+.collections_layout_wrapper {
+  @apply col-span-3 md:pl-4 gap-4 pt-4;
+}
+.collections_layout{
+    @apply grid-cols-1  lg:grid-cols-3 gap-4 md:px-2;
+}
