@@ -2,7 +2,7 @@
 
 The PlantUML Collection App is a web application that enables users to create, manage, and store PlantUML diagrams in collections. It also provides user authentication and profiles, creating a seamless experience for diagram enthusiasts.
 
-![App Screenshot](screenshot.png)
+![App Screenshot](https://github.com/thakurthegr8/umldrop/blob/main/public/UMLDROP%20-%20Google%20Chrome%202023-09-06%2020-51-31-min.gif?raw=true)
 
 ## Table of Contents
 
