@@ -1,9 +1,10 @@
-import Layout from '@/src/components/utils/Layout'
 import React from 'react'
+import styles from "./RegisterHeroBlock.module.css"
+import Layout from '@/src/components/utils/Layout'
 
 const RegisterHeroBlock = () => {
     return (
-        <Layout.Col className="hidden lg:flex bg-no-repeat bg-[url('/assets/register_landing.jpeg')] border-l border-dark_secondary bg-cover bg-center" >
+        <Layout.Col className={styles.main}>
         </Layout.Col>
     )
 }

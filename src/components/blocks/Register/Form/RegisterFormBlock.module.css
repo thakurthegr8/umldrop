@@ -1,0 +1,12 @@
+.main_container {
+  @apply max-w-sm pt-2 h-screen overflow-y-scroll col-span-2 lg:col-span-1;
+}
+.heading {
+  @apply text-center my-4 font-semibold;
+}
+.form_layout {
+  @apply gap-4;
+}
+.login_btn{
+    @apply w-full mt-4;
+}

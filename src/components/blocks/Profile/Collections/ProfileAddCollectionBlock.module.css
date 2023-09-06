@@ -1,8 +1,6 @@
-.main {
-  @apply p-4;
-}
+
 .main_col_layout {
-  @apply gap-4;
+  @apply gap-4 px-3 py-4;
 }
 .collection_items_layout {
   @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;

@@ -5,7 +5,7 @@ import { LOGOTEXT } from '@/src/constants';
 
 const Logo = () => {
   return (
-    <Link href="/" className={styles.logo}>{LOGOTEXT}</Link>
+    <Link href="/" className={styles.logo}>🧑‍🎨️{LOGOTEXT}</Link>
   )
 }
 

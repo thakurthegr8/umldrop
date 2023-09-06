@@ -1,0 +1,3 @@
+.main {
+  @apply hidden lg:flex bg-no-repeat bg-[url('/assets/register_landing.jpeg')] border-l border-dark_secondary bg-cover bg-center;
+}
