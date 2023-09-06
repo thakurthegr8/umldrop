@@ -1,14 +1,54 @@
-# SQL Playground: Mastering SQL through Interactive Problem Solving
+# PlantUML Collection App
 
-Welcome to the SQL Playground, a platform designed to empower SQL enthusiasts to enhance their skills through hands-on problem-solving. Whether you're a beginner eager to learn or an experienced SQL pro looking for challenges, this playground has something for everyone!
-![Ace SQL](https://github.com/thakurthegr8/data-lemur/blob/main/public/assets/og.png)
+The PlantUML Collection App is a web application that enables users to create, manage, and store PlantUML diagrams in collections. It also provides user authentication and profiles, creating a seamless experience for diagram enthusiasts.
+
+![App Screenshot](screenshot.png)
 
 ## Table of Contents
 
 - [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ## Features
 
-- **Top SQL Challenges:** Access a curated collection of challenging SQL questions to test and improve your skills.
-- **Interactive Environment:** Practice your queries in a real-world SQL environment without the fear of affecting production data.
-- **Immediate Feedback:** Receive instant feedback on your queries to learn from your mistakes and refine your approach.
+- Create and store PlantUML diagrams within collections.
+- Manage collections and diagrams with ease.
+- User authentication system for secure access.
+- User profiles to customize your experience.
+
+## Installation
+
+To run the PlantUML Collection App locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/thakurthegr8/umldrop
+   
+## Usage
+
+### Creating PlantUML Diagrams
+
+1. Log in to your account or create a new one.
+
+2. Navigate to your dashboard.
+
+3. Create a new collection or select an existing one.
+
+4. Add and edit PlantUML diagrams within your collection.
+
+5. Save your work, and it will be automatically stored in your collection.
+
+### Viewing and Managing Diagrams
+
+1. Access your collections and diagrams from the dashboard.
+
+2. View, edit, and delete diagrams as needed.
+
+3. Organize your diagrams within collections.
+
+### Sharing Diagrams
+
+1. Generate shareable links to your diagrams or collections.
+
+2. Collaborate with others by sharing links.
