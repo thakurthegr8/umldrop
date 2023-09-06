@@ -16,14 +16,16 @@ const CollectionPage = (props) => {
     return (
         <Page page={`${LOGOTEXT} | ${collection.name}`}>
             <Layout.Col className="border-b border-dark_secondary p-3">
-                <CollectionNavbar/>
+                <CollectionNavbar />
             </Layout.Col>
-            <Layout.Container className="max-w-6xl">
-                <Layout.Col>
-                    <CollectionHeaderBlock collection={collection} authorised={authorised} />
-                    <CollectionDiagramsBlock diagrams={diagrams} authorised={authorised} />
-                </Layout.Col>
-            </Layout.Container>
+            <Layout.Col className="bg-dark_secondary/20 min-h-screen">
+                <Layout.Container className="max-w-6xl">
+                    <Layout.Col>
+                        <CollectionHeaderBlock collection={collection} authorised={authorised} />
+                        <CollectionDiagramsBlock diagrams={diagrams} authorised={authorised} />
+                    </Layout.Col>
+                </Layout.Container>
+            </Layout.Col>
         </Page>
     )
 }

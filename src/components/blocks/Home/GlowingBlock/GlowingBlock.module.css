@@ -5,7 +5,7 @@
     @apply w-[300px] h-[300px]  rounded-full border top-24 rotate-90 translate-x-[-50%] left-[50%] absolute inset-0 border-white/30;
 }
 .lt_2_block{
-    @apply w-full h-[800px] animate-pulse  rounded-full border bg-fuchsia-400/30 -z-20 blur-3xl top-24 rotate-90 translate-x-[-50%] left-[50%] absolute inset-0 border-white/30;
+    @apply w-full h-[900px] animate-pulse  rounded-full border bg-orange-400/50 -z-20 blur-3xl top-24 rotate-90 translate-x-[-50%] left-[50%] absolute inset-0 border-white/30;
 }
 .lt_1_block:after{
     content:"";
