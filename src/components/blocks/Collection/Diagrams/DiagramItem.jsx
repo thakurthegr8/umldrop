@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from "./CollectionDiagramsBlock.module.css";
 import Link from 'next/link';
 import moment from 'moment';
@@ -28,7 +28,7 @@ const DiagramItem = (props) => {
                         {diagram.name}
                     </Typography.Caption>
                     <Typography.Caption className={styles.diagram_item_created_at}>
-                        Created at {moment(diagram.created_At).format("MMMM Do YYYY")}
+                        Created at {moment(diagram.created_at).format("MMMM Do YYYY")}
                     </Typography.Caption>
                 </Layout.Col>
                 <Layout.Row className={styles.diagram_item_actions_panel}>
@@ -47,4 +47,4 @@ const DiagramItem = (props) => {
     )
 }
 
-export default DiagramItem;
+export default memo(DiagramItem);

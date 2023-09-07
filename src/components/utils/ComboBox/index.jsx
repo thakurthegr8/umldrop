@@ -19,12 +19,12 @@ const CustomComboBox = (props) => {
         .includes(query.toLowerCase().replace(/\s+/g, '')));
 
     return (
-        <Combobox value={value} onChange={onChange} as={Layout.Col} className="relative z-10 rounded-md border border-dark_secondary bg-dark_secondary/50">
+        <Combobox value={value} onChange={onChange} as={Layout.Col} className="relative z-10 rounded-md border border-dark_secondary bg-dark_secondary/50 text-xs">
             <Layout.Row className="rounded overflow-hidden">
-                <Combobox.Input placeholder={props.placeholder} className="border-none bg-transparent" displayValue={(item) => item} onChange={onInputChange} />
+                <Combobox.Input placeholder={props.placeholder} className="border-none bg-transparent p-2" displayValue={(item) => item} onChange={onInputChange} />
                 <Combobox.Button><ChevronUpDownIcon className='w-6 h-6' /></Combobox.Button>
             </Layout.Row>
-            <Combobox.Options onBlur={() => setQuery("")} className="absolute max-h-[200px] overflow-y-scroll top-12 border border-dark_secondary divide-y divide-dark_secondary bg-black overflow-hidden inset-x-0 rounded-md">
+            <Combobox.Options onBlur={() => setQuery("")} className="absolute max-h-[200px] overflow-y-scroll top-10 border border-dark_secondary divide-y divide-dark_secondary bg-black overflow-hidden inset-x-0 rounded-md">
                 {filteredList.length == 0 && query !== "" ? <Typography.Body>Nothing found</Typography.Body>
                     :
                     filteredList.map((item, index) => <Combobox.Option className="p-2 bg-dark_secondary/50 hover:bg-dark_secondary cursor-pointer" value={item} key={index}>{item}</Combobox.Option>)}

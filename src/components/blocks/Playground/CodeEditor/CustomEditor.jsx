@@ -30,7 +30,7 @@ const CustomEditor = (props) => {
     }, [monaco]);
     return (
         <>
-            <Layout.Row className="p-2 relative">
+            <Layout.Row className="p-2 relative border-b border-dark_secondary">
                 <CustomComboBox placeholder="Select theme" list={Object.values(themes)} onChange={onChangeTheme} value="Your theme" />
             </Layout.Row>
             <Editor onChange={handleEditorChange} language="java" height="100%" defaultValue={props.localStorageInstance.value ? props.localStorageInstance.value : props.seed} theme="my-theme" />
