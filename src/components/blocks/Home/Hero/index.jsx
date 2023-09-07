@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link';
 import styles from "./Hero.module.css";
 import Typography from '@/src/components/utils/Typography'
 import { HOME_DESCRIPTION, HOME_HEADING } from '@/src/constants/home';
@@ -6,7 +7,6 @@ import Layout from '@/src/components/utils/Layout';
 import Button from '@/src/components/utils/Button';
 import Image from 'next/image';
 import ArrowLeftOnRectangleIcon from '@heroicons/react/20/solid/ArrowRightIcon';
-import Link from 'next/link';
 
 const loader = ({ src }) => src;
 

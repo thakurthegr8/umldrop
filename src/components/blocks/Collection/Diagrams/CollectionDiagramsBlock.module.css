@@ -1,5 +1,5 @@
 .main_grid_layout {
-  @apply sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  @apply sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-8;
 }
 
 .diagram_item_main {

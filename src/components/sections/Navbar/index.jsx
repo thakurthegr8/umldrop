@@ -20,7 +20,7 @@ const PlaygroundAction = () => {
     </Button>}>
         <Menu.Item as="span" className="p-2 hover:bg-white/10  cursor-pointer">
             <Link href="/playground" className="flex justify-between">
-                Goto playground <PlaygroundPlayIcon className="w-5 h-5 ml-1"/>
+                Goto playground <PlaygroundPlayIcon className="w-5 h-5 ml-1" />
             </Link>
         </Menu.Item>
         {auth.data && <Menu.Item as="span" className="p-2 hover:bg-white/10 flex justify-between cursor-pointer">
@@ -35,12 +35,12 @@ const Navbar = () => {
         <>
             <Logo />
             <Layout.Row className={styles.navbar_row}>
-                <PlaygroundAction />
                 <AccountAvatar />
                 {!auth.data && <>
                     <Link href="/register"><Button className="btn-icon">Register</Button></Link>
                     <Link href="/login"><Button className="btn-secondary">Login</Button></Link>
                 </>}
+                <PlaygroundAction />
             </Layout.Row>
         </>
     )
