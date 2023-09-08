@@ -30,8 +30,8 @@ const PlaygroundPage = (props) => {
             <PlaygroundNavbar />
             <DiagramProvider payload={props.query}>
                 <Layout.Col className="w-full relative border-dark_secondary">
-                    <Layout.Row className="fixed bottom-0 p-3 inset-x-0 z-10 flex justify-end md:hidden bg-general border-t border-dark_secondary">
-                        <Button className="btn-secondary" onClick={toggle}>Show Diagram</Button>
+                    <Layout.Row className="fixed bottom-12 p-3 inset-x-0 z-10 flex justify-end md:hidden ">
+                        <Button className="btn-secondary font-semibold" onClick={toggle}>Show Diagram</Button>
                     </Layout.Row>
                     <CodeEditor setImage={setImage} image={image} />
                     <Modal open={modalOpen} onClose={toggle}>

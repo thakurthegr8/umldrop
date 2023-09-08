@@ -1,5 +1,5 @@
 .main {
-  @apply relative z-10 backdrop-blur;
+  @apply relative z-20 backdrop-blur;
 }
 .main_menu_items {
   @apply absolute w-72 right-0 bg-general backdrop-blur-sm border-dark_secondary border rounded-xl shadow-md flex-col overflow-hidden divide-y divide-dark_secondary/50;

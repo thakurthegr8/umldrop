@@ -9,7 +9,7 @@
   @apply w-full h-44 bg-no-repeat bg-cover;
 }
 .diagram_item_description {
-  @apply p-2 gap-2;
+  @apply p-2 gap-2 bg-dark_secondary/60;
 }
 .diagram_item_name {
   @apply capitalize font-medium overflow-hidden text-ellipsis;

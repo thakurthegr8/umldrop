@@ -107,7 +107,7 @@ button {
 /* Icon */
 
 .btn-icon {
-  @apply rounded-full text-white bg-transparent p-2  hover:bg-white/20 active:bg-white/30;
+  @apply rounded-xl text-white p-2 bg-white/10  hover:bg-white/20 active:bg-white/30;
 }
 
 /* typography */

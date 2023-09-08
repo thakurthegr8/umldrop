@@ -7,7 +7,7 @@ import Typography from '../Typography';
 
 const Drawer = (props) => {
     return (
-        <Dialog onClose={props.onClose} open={props.open} className="bg-black bg-opacity-50 backdrop-blur-sm fixed inset-0 z-10" as={Layout.Row}>
+        <Dialog onClose={props.onClose} open={props.open} className="bg-black bg-opacity-50 backdrop-blur-sm fixed inset-0 z-30" as={Layout.Row}>
             <Transition appear show={props.open}
                 className="w-full z-10 flex justify-end"
                 enter="transform transition duration-[400ms]"
@@ -18,7 +18,7 @@ const Drawer = (props) => {
                 leaveTo="translate-x-0"
             >
                 <Dialog.Panel className="bg-general w-full sm:w-1/2 md:w-1/3 h-screen sm:border-l border-dark_secondary">
-                    <Layout.Row className="items-center justify-between border-b border-dark_secondary p-2">
+                    <Layout.Row className="items-center justify-between border-b border-dark_secondary p-2 bg-dark_secondary/50">
                         <Typography.Body className="font-semibold text-white/80">{props.title}</Typography.Body>
                         <Button onClick={props.onClose} className="btn-icon">
                             <CloseIcon className="text-white w-6 h-6" />
