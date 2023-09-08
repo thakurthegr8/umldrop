@@ -3,17 +3,13 @@ import axios from "axios";
 import Layout from "@/src/components/utils/Layout";
 import withURL from "@/src/middlewares/withUrl";
 import DiagramProvider from "@/src/providers/QuestionProvider";
-// import CodeEditor from "@/src/components/blocks/Question/CodeEditor";
 import Page from "@/src/components/pages";
 import PlaygroundNavbar from "@/src/components/blocks/Playground/Navbar";
 import CodeEditor from "@/src/components/blocks/Playground/CodeEditor";
-import Joi from "joi";
 import PlantUmlEncoder from "plantuml-encoder";
-import withAuthPage from "@/src/middlewares/withAuthPage";
 import { playgroundAddValidator, playgroundEditValidator } from "@/src/utils/validators";
 import Modal from "@/src/components/utils/Modal";
 import Button from "@/src/components/utils/Button";
-import { useMediaQuery } from "@uidotdev/usehooks";
 
 const DiagramImage = (props) => {
     if (!props?.image) return null
@@ -25,7 +21,6 @@ const DiagramImage = (props) => {
 
 const PlaygroundPage = (props) => {
     const [image, setImage] = useState(props.query?.encoded_string);
-    const smallDevice = useMediaQuery("only screen and (max-width : 768px)")
     const [modalOpen, setModalOpen] = useState(false);
     const toggle = () => {
         setModalOpen(prev => !prev)
@@ -39,15 +34,15 @@ const PlaygroundPage = (props) => {
                         <Button className="btn-secondary" onClick={toggle}>Show Diagram</Button>
                     </Layout.Row>
                     <CodeEditor setImage={setImage} image={image} />
-                    {smallDevice && <Modal open={modalOpen} onClose={toggle}>
+                    <Modal open={modalOpen} onClose={toggle}>
                         <Layout.Col className="w-screen items-center justify-center overflow-scroll h-screen aspect-square">
                             <DiagramImage image={image} />
                         </Layout.Col>
-                    </Modal>}
+                    </Modal>
                 </Layout.Col>
-                {!smallDevice && <Layout.Col className="items-center hidden md:flex justify-center border-l border-dark_secondary overflow-scroll h-screen">
-                    {image && <DiagramImage image={image} />}
-                </Layout.Col>}
+                <Layout.Col className="items-center hidden md:flex justify-center border-l border-dark_secondary overflow-scroll h-screen">
+                    <DiagramImage image={image} />
+                </Layout.Col>
             </DiagramProvider>
         </Layout.Grid>
     </Page>;
