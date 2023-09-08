@@ -1,11 +1,11 @@
 .main {
-  @apply sm:items-center sm:justify-between sm:flex-row py-4 gap-4;
+  @apply  grid-cols-1 md:grid-cols-3 place-content-between  py-4 gap-4;
 }
 .collection_name {
   @apply font-bold;
 }
 .collection_description {
-  @apply text-white/80 first-letter:capitalize;
+  @apply text-white/80 text-sm font-light first-letter:capitalize;
 }
 .add_diagram_btn {
   @apply font-semibold;

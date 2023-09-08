@@ -13,7 +13,8 @@ const DiagramItem = (props) => {
     const { authorised, diagram, setCurrentDiagram, toggleModal } = props;
     const editLink = `/playground?action_type=edit&id=${diagram.id}&collection_name=${diagram.collection_name}&encoded_string=${diagram.encoded_string}`;
     const backdropStyles = {
-        backgroundImage: `url("${PLANTUML.PNG}/${diagram.encoded_string}")`
+        backgroundImage: `url("${PLANTUML.PNG}/${diagram.encoded_string}")`,
+        backgroundPosition:"center center"
     }
     const viewBtnHandler = () => {
         setCurrentDiagram(diagram);

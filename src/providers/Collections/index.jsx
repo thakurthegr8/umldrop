@@ -12,10 +12,11 @@ const CollectionsProvider = (props) => {
     const { user } = props.value;
     const [collections, setCollections] = useState(props.value.collections);
     const addCollections = useFetch({ url: "/api/collections/add", method: "POST" });
+    const deleteCollection = useFetch({ url: "/api/collections/delete", method: "DELETE" });
     const mutate = (handler) => {
         setCollections(handler);
     }
-    return <CollectionsContext.Provider value={{ collections, user, addCollections, mutate }}>{props.children}</CollectionsContext.Provider>
+    return <CollectionsContext.Provider value={{ collections, user, addCollections, deleteCollection, mutate }}>{props.children}</CollectionsContext.Provider>
 }
 
 export default CollectionsProvider;
