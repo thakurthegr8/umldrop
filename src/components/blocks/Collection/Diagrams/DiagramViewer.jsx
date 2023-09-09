@@ -32,9 +32,9 @@ const DiagramViewer = (props) => {
                             </code>
                         </pre>
                     </Layout.Col>
-                    <Layout.Col>
-                        <img src={`https://www.plantuml.com/plantuml/png/${diagram?.encoded_string}`} alt={diagram?.name} className='w-full' />
-                    </Layout.Col>
+                    <Layout.Row className="p-2 aspect-video justify-center items-center">
+                        <img src={`https://www.plantuml.com/plantuml/png/${diagram?.encoded_string}`} alt={diagram?.name} />
+                    </Layout.Row>
                 </Layout.Grid>
             </Layout.Col>
         </Modal>

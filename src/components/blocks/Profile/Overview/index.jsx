@@ -5,6 +5,7 @@ import Layout from '@/src/components/utils/Layout'
 import Typography from '@/src/components/utils/Typography'
 import { useProfile } from '@/src/providers/Profile'
 import CollectionItem from '../Collections/CollectionItem'
+import Placeholder from '@/src/components/elements/Placeholder'
 
 const ProfileOverviewBlock = () => {
     const profile = useProfile();
@@ -35,7 +36,7 @@ const ProfileOverviewBlock = () => {
                     {collections.length !== 0 ?
                         <Layout.Grid className={styles.collections_layout}>
                             {collections.map((item, index) => <CollectionItem collection={item} user={user} key={index} />)}
-                        </Layout.Grid> : <Typography.Body>No collections for now</Typography.Body>}
+                        </Layout.Grid> : <Placeholder title="It's empty in here..." description="This user current does not have any collections." />}
                 </Layout.Col>
             </Layout.Grid>
         </Layout.Container>

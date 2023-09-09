@@ -45,7 +45,7 @@ export default ProfilePage;
 
 
 export const getServerSideProps = async (ctx) => {
-    
+
     const { profile } = ctx.query;
     try {
         const user = await supabaseClient.from("users").select("*").eq("username", profile).single();
@@ -65,3 +65,4 @@ export const getServerSideProps = async (ctx) => {
         }
     }
 }
+

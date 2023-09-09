@@ -4,6 +4,9 @@ import Layout from '@/src/components/utils/Layout';
 import Typography from '@/src/components/utils/Typography';
 import DiagramViewer from './DiagramViewer';
 import DiagramItem from './DiagramItem';
+import Placeholder from '@/src/components/elements/Placeholder';
+
+
 
 const CollectionDiagramsBlock = (props) => {
     const { diagrams, authorised } = props;
@@ -18,7 +21,7 @@ const CollectionDiagramsBlock = (props) => {
                 <Layout.Grid className={styles.main_grid_layout}>
                     {diagrams.map((item) => <DiagramItem key={item.id} diagram={item} authorised={authorised} setCurrentDiagram={setCurrentDiagram} toggleModal={toggleModal} />)}
                 </Layout.Grid> :
-                <Typography>No diagrams for now</Typography>}
+                <Placeholder title="It's empty in here" description="This collection does not have any diagrams." />}
             <DiagramViewer isModalOpen={isModalOpen} toggleModal={toggleModal} diagram={diagram} />
         </Layout.Col>
     )
