@@ -7,7 +7,7 @@ import Typography from '../Typography';
 
 const Modal = (props) => {
     return (
-        <Dialog onClose={props.onClose} open={props.open} className="bg-black bg-opacity-90  fixed inset-0 justify-end sm:justify-center z-10 items-center" as={Layout.Col}>
+        <Dialog onClose={props.onClose} open={props.open} className="bg-black bg-opacity-90  fixed inset-0 justify-end sm:justify-center z-20 items-center" as={Layout.Col}>
             <Transition appear show={props.open}
                 as={Fragment}
                 enter="transform transition duration-[400ms]"

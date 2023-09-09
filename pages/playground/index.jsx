@@ -10,11 +10,12 @@ import PlantUmlEncoder from "plantuml-encoder";
 import { playgroundAddValidator, playgroundEditValidator } from "@/src/utils/validators";
 import Modal from "@/src/components/utils/Modal";
 import Button from "@/src/components/utils/Button";
+import { PLANTUML_BASE_URL } from "@/src/constants/image";
 
 const DiagramImage = (props) => {
     if (!props?.image) return null
     return <img
-        src={`https://plantuml.com/plantuml/png/${props.image}`}
+        src={`${PLANTUML_BASE_URL}/png/${props.image}`}
         className="object-cover"
     />
 }

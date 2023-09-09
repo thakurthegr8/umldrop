@@ -35,7 +35,7 @@ const CollectionHeaderBlock = (props) => {
                 <Typography.Body className={styles.collection_description}>{collection.description}</Typography.Body>
             </Layout.Col>
             {authorised &&
-                <Layout.Row className="gap-2 items-start md:justify-end">
+                <Layout.Row className="gap-2 items-center md:items-start md:justify-end">
                     <Button
                         className={`btn-secondary ${styles.add_diagram_btn}`}
                         onClick={toggleAddDiagramDrawer}>

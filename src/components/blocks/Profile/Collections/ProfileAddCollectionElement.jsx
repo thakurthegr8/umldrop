@@ -7,6 +7,7 @@ import Form from "@/src/components/utils/Form";
 import Layout from "@/src/components/utils/Layout";
 import { useAuth } from "@/src/providers/Auth";
 import { useCollections } from "@/src/providers/Collections";
+import { toast } from "react-toastify";
 
 const ProfileAddCollectionElement = () => {
     const auth = useAuth();
