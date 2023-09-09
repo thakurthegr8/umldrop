@@ -1,4 +1,4 @@
-export const DOMAIN = "ace-sql.vercel.app";
+export const DOMAIN = "umldrop.vercel.app";
 
 export const LOGOTEXT = "UMLDROP";
 

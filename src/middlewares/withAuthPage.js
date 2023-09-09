@@ -8,14 +8,20 @@ const withAuthPage = (handler) => {
     const accessToken = cookies.get("access_token");
     if (!accessToken)
       return {
-        notFound: true,
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
       };
     const { data, error: userFetchError } = await supabaseClient.auth.getUser(
       accessToken
     );
     if (userFetchError)
       return {
-        notFound: true,
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
       };
     req.user = data.user.email;
     return handler(ctx);

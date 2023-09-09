@@ -2,10 +2,15 @@ import React from "react";
 import { BeatLoader, PulseLoader } from "react-spinners";
 
 const Button = (props) => {
+  const { loading, ...restProps } = props;
   if (props?.loading) {
-    return <button {...props} disabled><PulseLoader className="py-1" size={8} color="gray" /></button>;
+    return <button {...restProps} disabled><PulseLoader className="py-1" size={8} color="gray" /></button>;
   }
-  return <button {...props} />;
+  return <button {...restProps} />;
 };
 
 export default Button;
+
+Button.defaultProps = {
+  loading: false
+}

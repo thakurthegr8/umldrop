@@ -19,9 +19,9 @@ const CustomComboBox = (props) => {
         .includes(query.toLowerCase().replace(/\s+/g, '')));
 
     return (
-        <Combobox value={value} onChange={onChange} as={Layout.Col} className="relative z-10 rounded-md border border-dark_secondary bg-dark_secondary/50 text-xs">
-            <Layout.Row className="rounded overflow-hidden">
-                <Combobox.Input placeholder={props.placeholder} className="border-none bg-transparent p-2" displayValue={(item) => item} onChange={onInputChange} />
+        <Combobox value={value} onChange={onChange} as={Layout.Col} className="relative z-10 rounded-md border border-dark_secondary bg-dark_secondary/50 text-sm">
+            <Layout.Row className="rounded overflow-hidden justify-between">
+                <Combobox.Input  name="combobox_name" placeholder={props.placeholder} className="border-none bg-transparent p-2" displayValue={(item) => item} onChange={onInputChange} />
                 <Combobox.Button><ChevronUpDownIcon className='w-6 h-6' /></Combobox.Button>
             </Layout.Row>
             <Combobox.Options onBlur={() => setQuery("")} className="absolute max-h-[200px] overflow-y-scroll top-10 border border-dark_secondary divide-y divide-dark_secondary bg-black overflow-hidden inset-x-0 rounded-md">

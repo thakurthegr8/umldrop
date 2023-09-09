@@ -6,6 +6,7 @@ import { useCollections } from '@/src/providers/Collections';
 import ProfileAddCollectionElement from './ProfileAddCollectionElement';
 import CollectionItem from "./CollectionItem";
 import UserCircleIcon from "@heroicons/react/24/outline/UserCircleIcon";
+import Placeholder from "@/src/components/elements/Placeholder";
 
 
 
@@ -21,7 +22,7 @@ const ProfileCollectionsBlock = () => {
                     {collections.map((item, index) => {
                         return <CollectionItem key={index} collection={item} user={user} />
                     })}
-                </Layout.Grid> : <Typography.Body>No collections for now</Typography.Body>}
+                </Layout.Grid> : <Placeholder title="It's empty in here..." description="This user current does not have any collections." />}
         </Layout.Col>
     )
 }
