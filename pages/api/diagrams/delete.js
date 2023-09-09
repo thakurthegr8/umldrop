@@ -3,28 +3,22 @@ import supabaseClient from "@/src/services/supabase";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 const handler = async (req, res) => {
-  if (req.method !== "PUT")
+  if (req.method !== "DELETE")
     return res
       .status(StatusCodes.METHOD_NOT_ALLOWED)
       .json(ReasonPhrases.METHOD_NOT_ALLOWED);
+  if (!req.query?.id)
+    return res.status(StatusCodes.NOT_ACCEPTABLE).json("invalid parameters");
   try {
-    const paramsToUpdate = ["name", "encoded_string"];
-    const payload = {};
-    paramsToUpdate.forEach((item) => {
-      if (req.body?.[item]) {
-        payload[item] = req.body[item];
-      }
-    });
-    const updatedPayload = await supabaseClient
+    const deletePayload = await supabaseClient
       .from("diagrams")
-      .update(payload)
-      .eq("id", req.body.id)
-      .eq("collection_name", req.body.collection_name)
+      .delete()
+      .eq("id", req.query.id)
       .eq("owner", req.user)
       .select()
       .single();
-    if (updatedPayload.error) throw updatedPayload.error;
-    return res.status(StatusCodes.CREATED).json(updatedPayload.data);
+    if (deletePayload.error) throw deletePayload.error;
+    return res.status(StatusCodes.OK).json(deletePayload.data);
   } catch (error) {
     console.log(error);
     return res.status(StatusCodes.BAD_REQUEST).json(error);

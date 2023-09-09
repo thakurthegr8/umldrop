@@ -1,30 +1,35 @@
+import React from 'react';
+import Link from 'next/link';
 import Button from '@/src/components/utils/Button';
 import CopyToClipboard from '@/src/components/utils/General/CopyToClipboard';
 import Layout from '@/src/components/utils/Layout'
 import Modal from '@/src/components/utils/Modal'
-import Link from 'next/link';
 import PlantUmlEncoder from 'plantuml-encoder';
-import React from 'react'
+import DeleteDiagramConfirmation from './DeleteDiagramConfirmation';
+import EditDiagramBlock from './EditDiagramBlock';
+import DownloadDiagramBlock from './DownloadDiagramBlock';
 
 const DiagramViewer = (props) => {
-    const { isModalOpen, toggleModal,diagram } = props;
+    const { isModalOpen, toggleModal, diagram } = props;
     return (
         <Modal open={isModalOpen} onClose={toggleModal} title="View Diagram">
-            <Layout.Col className="h-[72vh] w-screen md:w-full overflow-hidden overflow-y-auto">
-                <Layout.Col className="md:flex-row p-4 justify-end gap-2 border-b border-dark_secondary md:items-center">
+            <Layout.Col className="h-[72vh] aspect-square w-screen md:w-full md:min-w-[40rem] overflow-hidden overflow-y-auto">
+                <Layout.Col className="sm:flex-row p-4 justify-end gap-2 border-b border-dark_secondary md:items-center">
                     <Link href={`/playground?encoded_string=${diagram?.encoded_string}`}>
                         <Button className="btn-secondary w-full">Open in playground</Button></Link>
-                    {/* <Button className="bg-dark_secondary/50 border border-dark_secondary">Download<DownloadIcon className='w-4 h-4 ml-1' /></Button>
-                        {authorised && <Button className="btn-primary">Edit <PencilIcon className='w-3 h-3 ml-1' /></Button>}
-                        {authorised && <Button className="bg-red-900/50 text-red-500"><TrashIcon className='w-5 h-5' /></Button>} */}
+                    <DownloadDiagramBlock diagram={diagram} />
+                    <EditDiagramBlock diagram={diagram} />
+                    <DeleteDiagramConfirmation diagram={diagram} />
                 </Layout.Col>
-                <Layout.Grid className="grid-cols-1 md:grid-cols-2">
-                    <Layout.Col className="text-sm rounded-md overflow-hidden">
+                <Layout.Grid className="grid-cols-1 ">
+                    <Layout.Col className="text-sm rounded-md overflow-hidden p-2">
                         <Layout.Row className="justify-end p-2">
                             {diagram && <CopyToClipboard text={PlantUmlEncoder.decode(diagram?.encoded_string || "")} />}
                         </Layout.Row>
-                        <pre className="bg-dark_secondary/50 p-2">
-                            {diagram && PlantUmlEncoder.decode(diagram?.encoded_string)}
+                        <pre className="bg-dark_secondary/50 p-2 rounded-md">
+                            <code>
+                                {diagram && PlantUmlEncoder.decode(diagram?.encoded_string)}
+                            </code>
                         </pre>
                     </Layout.Col>
                     <Layout.Col>
